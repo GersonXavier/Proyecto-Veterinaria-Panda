@@ -7,6 +7,8 @@ import cl.dci.eshop.model.ProductoCarrito;
 import cl.dci.eshop.repository.CarritoRepository;
 import cl.dci.eshop.repository.ProductoCarritoRepository;
 import cl.dci.eshop.repository.ProductoRepository;
+import cl.dci.eshop.repository.ServicioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,6 +28,8 @@ public class ProductoController {
     private ProductoCarritoRepository productoCarritoRepository;
     @Autowired
     private CarritoRepository carritoRepository;
+    @Autowired
+    private ServicioRepository serviciojpaRepository;
 
 
 
@@ -54,6 +58,9 @@ public class ProductoController {
         productoJpaRepository.deleteById(id);
         return "redirect:/admin/productos";
     }
+    
+  
+    
     @PreAuthorize("hasAuthority('producto:update')")
     @GetMapping("/update/{id}")
     public String getEditarProducto(@PathVariable int id, Model modelo){

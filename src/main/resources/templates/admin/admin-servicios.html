@@ -1,10 +1,172 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
 <body>
-hola
+<!-- Navigation -->
+<nav th:replace="fragments :: navigation-shop"></nav>
+<nav th:replace="fragments :: navigation-admin"></nav>
+
+<div class="container">
+    <h2>Administracion de Servicios</h2>
+    <br>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#home">Lista de servicios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu1">Crear nuevo servicio</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div id="home" class="container tab-pane active"><br>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8 shadow-lg p-3 mb-5 bg-white rounded">
+                    <div class="container">
+                        <h2>Lista de servicios</h2>
+                        <table class="table table-dark table-hover">
+                            <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Descripcion</th>
+                                <th>Horario</th>
+                                <th>Fecha</th>
+                                
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="servicio: ${servicios}">
+                                <td th:text="${servicio.nombre}">John</td>
+                                <td th:text="${servicio.precio}">Doe</td>
+                                <td th:text="${servicio.descripcion}"></td>
+                                <td th:text="${servicio.horario}"></td>
+                                <td th:text="${servicio.fecha}"></td>
+
+                                <td>
+                           <!--
+                                    <form action="#" th:action="@{/api/producto/delete/{id}(id=${producto.id})}"
+                                          method="post"
+                                          onsubmit="return confirm('¿Estás seguro que quieres borrar este producto? No hay vuelta atrás');">
+                                        <a th:href="@{/api/producto/update/{id}(id=${producto.id})}">
+                                            <button type="button" class="btn btn-warning">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                        </a>
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash-alt"></i>
+                                        </button>
+                                    </form> 
+                                                         -->
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+        
+        <!--  
+        <div id="menu1" class="container tab-pane fade"><br>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6 shadow-lg p-3 mb-5 bg-white rounded"><br>
+                    <h2>Crear nuevo producto</h2> <br>
+                    <form th:action="@{/api/producto/crear}" th:object="${producto}" method="post" enctype="multipart/form-data">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i> Nombre</span>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Nombre del producto"
+                                   th:field="*{nombre}">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-dollar-sign"></i> Precio</span>
+                                </div>
+                            </div>
+                            <input type="number" class="form-control" min="0" th:field="*{precio}" >
+                        </div>
+                        
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i> Descripcion</span>
+                                </div>
+                            </div>
+                            <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" ></textarea>
+                            
+                        </div>
+                        
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i> Descripcion Completa</span>
+                                </div>
+                            </div>
+                            <textarea  rows="8" cols="40" placeholder="ingrese una descripcion" ></textarea>
+                            
+                        </div>
+                        
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-dollar-sign"></i> Imagen 1</span>
+                                </div>
+                            </div>
+                            <input type="file" class="form-control" min="0" name="file" id="imagen1" >
+                        </div>
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-dollar-sign"></i> Imagen 2</span>
+                                </div>
+                            </div>
+                            <input type="file" class="form-control" min="0" name="file" id="imagen2">
+                        </div>
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-dollar-sign"></i> Imagen 3</span>
+                                </div>
+                            </div>
+                            <input type="file" class="form-control" min="0" name="file" id="imagen3">
+                        </div>
+                        <button type="submit" class="btn btn-success">Agregar nuevo producto</button>
+                    </form>
+                    <br>
+                </div>
+                <div class="col-3"></div>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+        -->
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer th:replace="fragments :: footer"></footer>
+
+
 </body>
-</html>
+<!--
+<style>
+    footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+}
+</style>
+-->

@@ -68,6 +68,8 @@ public class Carrito {
         this.precioTotal -= producto.getPrecio();
         this.cantidadProductos--;
     }
+    
+  
 /*
     public void vaciarCarrito(){
         this.productos.clear();

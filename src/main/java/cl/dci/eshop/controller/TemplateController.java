@@ -4,9 +4,11 @@ import cl.dci.eshop.auth.User;
 import cl.dci.eshop.model.Carrito;
 import cl.dci.eshop.model.Producto;
 import cl.dci.eshop.model.ProductoCarrito;
+import cl.dci.eshop.model.servicio;
 import cl.dci.eshop.repository.CarritoRepository;
 import cl.dci.eshop.repository.ProductoCarritoRepository;
 import cl.dci.eshop.repository.ProductoRepository;
+import cl.dci.eshop.repository.ServicioRepository;
 import cl.dci.eshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -34,6 +36,9 @@ public class TemplateController {
     private CarritoRepository carritoRepository;
     @Autowired
     private ProductoCarritoRepository productoCarritoRepository;
+    @Autowired
+    private ServicioRepository servicioRepository;
+   
 
 
     @GetMapping()
@@ -167,6 +172,19 @@ public class TemplateController {
 
         modelo.addAttribute("producto", new Producto());
         return "admin/admin-productos";
+        
+    }
+    
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @GetMapping("admin/servicios")
+    public String getAdminServicios(Model modelo) {
+        basicSetup(modelo, "administrar servicios");
+        List<servicio> servicios = servicioRepository.findAll();
+        modelo.addAttribute("servicios", servicios);
+
+        modelo.addAttribute("servicio", new Producto());
+        return "admin/admin-servicios";
+        
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")

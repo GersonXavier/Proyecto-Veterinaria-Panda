@@ -25,6 +25,7 @@ public class servicio {
 	private String horario;
 	@Column
 	private String fecha;
+	
 	public int getIdServicio() {
 		return idServicio;
 	}
