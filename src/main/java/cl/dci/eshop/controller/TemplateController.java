@@ -52,6 +52,11 @@ public class TemplateController {
         return "login";
     }
 
+    @GetMapping("mascotas")
+    public String getMascotas() {
+    	return "mascotas";
+    }
+    
     @GetMapping("courses")
     public String getCourses() {
         String username = "";
