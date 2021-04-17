@@ -22,6 +22,10 @@ public class Mascota {
 	private String tipo;
 	@Column
 	private int idDueño;
+	@Column
+	private int edad;
+	@Column
+	private double peso;
 	
 	public int getidMoscota() {
 		return idMoscota;
@@ -49,5 +53,19 @@ public class Mascota {
 	}
 	public void setidDueño(int idDueño) {
 		this.idDueño = idDueño;
+	}
+	
+	public int getedad() {
+		return edad;
+	}
+	public void setedad(int edad) {
+		this.edad = edad;
+	}
+	
+	public double getpeso() {
+		return peso;
+	}
+	public void setpeso(double peso) {
+		this.peso = peso;
 	}
 }
