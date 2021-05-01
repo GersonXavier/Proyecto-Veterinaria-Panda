@@ -16,13 +16,18 @@ public class ProductoCarrito {
     @ManyToOne
     @JoinColumn(name = "carrito_id")
     private Carrito carrito;
+    
+    @ManyToOne
+    @JoinColumn(name = "servicio_id")
+    private servicio servicio;
 
     public ProductoCarrito() {
     }
 
-    public ProductoCarrito(Producto producto, Carrito carrito) {
+    public ProductoCarrito(Producto producto, Carrito carrito, servicio servicio) {
         this.producto = producto;
         this.carrito = carrito;
+        this.servicio = servicio;
     }
 
 
@@ -58,4 +63,14 @@ public class ProductoCarrito {
     public void setCarrito(Carrito carrito) {
         this.carrito = carrito;
     }
+
+	public servicio getServicio() {
+		return servicio;
+	}
+
+	public void setServicio(servicio servicio) {
+		this.servicio = servicio;
+	}
+    
+    
 }

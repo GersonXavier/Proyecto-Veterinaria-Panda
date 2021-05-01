@@ -14,11 +14,11 @@ public class servicio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idServicio;
+	private int id;
 	@Column
 	private String nombre;
 	@Column
-	private String precio;
+	private int precio;
 	@Column
 	private String descripcion;
 	@Column
@@ -26,11 +26,26 @@ public class servicio {
 	@Column
 	private String fecha;
 	
-	public int getIdServicio() {
-		return idServicio;
+	
+	
+	public servicio() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	public void setIdServicio(int idServicio) {
-		this.idServicio = idServicio;
+	public servicio(int id, String nombre, int precio, String descripcion, String horario, String fecha) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.descripcion = descripcion;
+		this.horario = horario;
+		this.fecha = fecha;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getNombre() {
 		return nombre;
@@ -38,10 +53,10 @@ public class servicio {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getPrecio() {
+	public int getPrecio() {
 		return precio;
 	}
-	public void setPrecio(String precio) {
+	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
 	public String getDescripcion() {
@@ -62,6 +77,8 @@ public class servicio {
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+	
+	
 	
 	
 }

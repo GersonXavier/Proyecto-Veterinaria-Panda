@@ -2,10 +2,12 @@ package cl.dci.eshop.controller;
 
 import cl.dci.eshop.auth.User;
 import cl.dci.eshop.model.Carrito;
+import cl.dci.eshop.model.Mascota;
 import cl.dci.eshop.model.Producto;
 import cl.dci.eshop.model.ProductoCarrito;
 import cl.dci.eshop.model.servicio;
 import cl.dci.eshop.repository.CarritoRepository;
+import cl.dci.eshop.repository.MascotaRepository;
 import cl.dci.eshop.repository.ProductoCarritoRepository;
 import cl.dci.eshop.repository.ProductoRepository;
 import cl.dci.eshop.repository.ServicioRepository;
@@ -38,6 +40,8 @@ public class TemplateController {
     private ProductoCarritoRepository productoCarritoRepository;
     @Autowired
     private ServicioRepository servicioRepository;
+    @Autowired
+    private MascotaRepository mascotaRepository;
    
 
 
@@ -187,8 +191,20 @@ public class TemplateController {
         List<servicio> servicios = servicioRepository.findAll();
         modelo.addAttribute("servicios", servicios);
 
-        modelo.addAttribute("servicio", new Producto());
+        modelo.addAttribute("servicio", new servicio());
         return "admin/admin-servicios";
+        
+    }
+    
+    
+    @GetMapping("admin/mascotas")
+    public String getMascotas(Model modelo) {
+        basicSetup(modelo, "administrar mascotas");
+        List<Mascota> mascota = mascotaRepository.findAll();
+        modelo.addAttribute("mascotas", mascota);
+
+        modelo.addAttribute("mascota", new Mascota());
+        return "mascotas";
         
     }
 

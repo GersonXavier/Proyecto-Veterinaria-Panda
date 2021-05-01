@@ -39,7 +39,9 @@
                             <tbody>
                             <tr th:each="producto: ${productos}">
                                 <td th:text="${producto.nombre}">John</td>
-                                <td th:text="'$'+${producto.precio}">Doe</td>
+                                <td th:text="${producto.precio}">Doe</td>
+                                <td th:text="${producto.descripcionSim}">Doe</td>
+                                <td th:text="${producto.descripciomHtml}">Doe</td>
 
                                 <td>
 
@@ -93,7 +95,7 @@
                                     <span><i class="fa fa-keyboard"></i> Descripcion</span>
                                 </div>
                             </div>
-                            <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" ></textarea>
+                            <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" th:field="*{descripcionSim}" ></textarea>
                             
                         </div>
                         
@@ -103,10 +105,10 @@
                                     <span><i class="fa fa-keyboard"></i> Descripcion Completa</span>
                                 </div>
                             </div>
-                            <textarea rows="8" cols="40" placeholder="ingrese una descripcion" ></textarea>
+                            <textarea rows="8" cols="40" placeholder="ingrese una descripcion" th:field="*{descripciomHtml}" ></textarea>
                             
                         </div>
-                        
+                        <!-- 
                          <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -131,6 +133,8 @@
                             </div>
                             <input type="file" class="form-control" min="0" name="file" id="imagen3">
                         </div>
+                        
+                        -->
                         <button type="submit" class="btn btn-success">Agregar nuevo producto</button>
                     </form>
                     <br>

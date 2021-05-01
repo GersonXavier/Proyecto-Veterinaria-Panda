@@ -4,9 +4,12 @@ import cl.dci.eshop.auth.User;
 import cl.dci.eshop.model.Carrito;
 import cl.dci.eshop.model.Producto;
 import cl.dci.eshop.model.ProductoCarrito;
+import cl.dci.eshop.model.servicio;
 import cl.dci.eshop.repository.CarritoRepository;
 import cl.dci.eshop.repository.ProductoCarritoRepository;
 import cl.dci.eshop.repository.ProductoRepository;
+import cl.dci.eshop.repository.ServicioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,6 +27,9 @@ public class CarritoController {
     private CarritoRepository carritoRepository;
     @Autowired
     private ProductoRepository productoRepository;
+    
+    @Autowired
+    private ServicioRepository servicioRepository;
     @Autowired
     private ProductoCarritoRepository productoCarritoRepository;
 
@@ -31,10 +37,11 @@ public class CarritoController {
     public String agregarProducto(@PathVariable int id){
         System.out.println(id);
         Producto producto = productoRepository.findById(id).orElse(null);
+        servicio servicio = servicioRepository.findById(id).orElse(null);
         Carrito carrito = getCurrentUser().getCarrito();
         carrito.addProducto(producto);
 
-        ProductoCarrito pc = new ProductoCarrito(producto, carrito);
+        ProductoCarrito pc = new ProductoCarrito(producto,carrito,servicio);
         productoCarritoRepository.save(pc);
         carritoRepository.save(carrito);
         return "redirect:/carrito";

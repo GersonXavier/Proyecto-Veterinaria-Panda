@@ -27,6 +27,24 @@ public class Mascota {
 	@Column
 	private double peso;
 	
+	
+	
+	
+	
+	
+	public Mascota() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Mascota(int idMoscota, String nombre, String tipo, int idDueño, int edad, double peso) {
+		super();
+		this.idMoscota = idMoscota;
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.idDueño = idDueño;
+		this.edad = edad;
+		this.peso = peso;
+	}
 	public int getidMoscota() {
 		return idMoscota;
 	}

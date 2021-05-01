@@ -69,6 +69,11 @@ public class Carrito {
         this.cantidadProductos--;
     }
     
+    public void deleteServicio(servicio servicio){
+        this.precioTotal -= servicio.getPrecio();
+        this.cantidadProductos--;
+    }
+    
   
 /*
     public void vaciarCarrito(){

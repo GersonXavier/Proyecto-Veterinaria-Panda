@@ -41,26 +41,26 @@
                             </thead>
                             <tbody>
                             <tr th:each="servicio: ${servicios}">
-                                <td th:text="${servicio.nombre}">John</td>
-                                <td th:text="${servicio.precio}">Doe</td>
+                                <td th:text="${servicio.nombre}"></td>
+                                <td th:text="${servicio.precio}"></td>
                                 <td th:text="${servicio.descripcion}"></td>
                                 <td th:text="${servicio.horario}"></td>
                                 <td th:text="${servicio.fecha}"></td>
 
                                 <td>
-                           <!--
-                                    <form action="#" th:action="@{/api/producto/delete/{id}(id=${producto.id})}"
+                          
+                                    <form action="#" th:action="@{/api/producto/deleteSer/{id}(id=${servicio.id})}"
                                           method="post"
                                           onsubmit="return confirm('¿Estás seguro que quieres borrar este producto? No hay vuelta atrás');">
-                                        <a th:href="@{/api/producto/update/{id}(id=${producto.id})}">
+                                         <a th:href="@{/api/producto/updateSer/{id}(id=${servicio.id})}">
                                             <button type="button" class="btn btn-warning">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                        </a>
+                                        </a> -->
                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash-alt"></i>
                                         </button>
                                     </form> 
-                                                         -->
+                                                         
                                 </td>
                             </tr>
                             </tbody>
@@ -70,14 +70,14 @@
                 <div class="col-2"></div>
             </div>
         </div>
-        
-        <!--  
+   
+      
         <div id="menu1" class="container tab-pane fade"><br>
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6 shadow-lg p-3 mb-5 bg-white rounded"><br>
                     <h2>Crear nuevo producto</h2> <br>
-                    <form th:action="@{/api/producto/crear}" th:object="${producto}" method="post" enctype="multipart/form-data">
+                    <form th:action="@{/api/producto/crearSer}" th:object="${servicio}" method="post" enctype="multipart/form-data">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -102,45 +102,32 @@
                                     <span><i class="fa fa-keyboard"></i> Descripcion</span>
                                 </div>
                             </div>
-                            <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" ></textarea>
+                            <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" th:field="*{descripcion}"  ></textarea>
                             
                         </div>
                         
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <span><i class="fa fa-keyboard"></i> Descripcion Completa</span>
+                                    <span><i class="fa fa-keyboard"></i> Horario</span>
                                 </div>
                             </div>
-                            <textarea  rows="8" cols="40" placeholder="ingrese una descripcion" ></textarea>
+                              <input type="text" class="form-control" placeholder="Nombre del producto"
+                                   th:field="*{horario}">
                             
                         </div>
                         
                          <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <span><i class="fa fa-dollar-sign"></i> Imagen 1</span>
+                                    <span><i class="fa fa-dollar-sign"></i> Fecha</span>
                                 </div>
                             </div>
-                            <input type="file" class="form-control" min="0" name="file" id="imagen1" >
+                             <input type="text" class="form-control" min="0" th:field="*{fecha}" > >
                         </div>
-                         <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <span><i class="fa fa-dollar-sign"></i> Imagen 2</span>
-                                </div>
-                            </div>
-                            <input type="file" class="form-control" min="0" name="file" id="imagen2">
-                        </div>
-                         <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <span><i class="fa fa-dollar-sign"></i> Imagen 3</span>
-                                </div>
-                            </div>
-                            <input type="file" class="form-control" min="0" name="file" id="imagen3">
-                        </div>
-                        <button type="submit" class="btn btn-success">Agregar nuevo producto</button>
+                        
+                        
+                        <button type="submit" class="btn btn-success">Agregar Nuevo Servicio</button>
                     </form>
                     <br>
                 </div>

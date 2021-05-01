@@ -3,6 +3,8 @@ package cl.dci.eshop.repository;
 import cl.dci.eshop.model.Carrito;
 import cl.dci.eshop.model.Producto;
 import cl.dci.eshop.model.ProductoCarrito;
+import cl.dci.eshop.model.servicio;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -13,4 +15,5 @@ public interface ProductoCarritoRepository extends JpaRepository<ProductoCarrito
     //Optional<ProductoCarrito> findByCarrito(Carrito carrito);
     List<ProductoCarrito> findByCarrito(Carrito carrito);
     List<ProductoCarrito> findByProducto(Producto producto);
+    List<ProductoCarrito> findByServicio(servicio servicio);
 }
