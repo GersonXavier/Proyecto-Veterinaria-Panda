@@ -32,7 +32,12 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>Precio</th>
-                                <th>Opciones</th>
+                                <th>Descripcion</th>
+                             
+                                  <th>Imagen1</th>
+                                   <th>Imagen2</th>
+                                    <th>Imagen3</th>
+                                     <th>Opciones</th>
 
                             </tr>
                             </thead>
@@ -41,7 +46,10 @@
                                 <td th:text="${producto.nombre}">John</td>
                                 <td th:text="${producto.precio}">Doe</td>
                                 <td th:text="${producto.descripcionSim}">Doe</td>
-                                <td th:text="${producto.descripciomHtml}">Doe</td>
+                                
+                                <td th:text="${producto.foto1}">Doe</td>
+                                <td th:text="${producto.foto2}">Doe</td>
+                                <td th:text="${producto.foto3}">Doe</td>
 
                                 <td>
 
@@ -108,7 +116,7 @@
                             <textarea rows="8" cols="40" placeholder="ingrese una descripcion" th:field="*{descripciomHtml}" ></textarea>
                             
                         </div>
-                        <!-- 
+                     
                          <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -117,13 +125,14 @@
                             </div>
                             <input type="file" class="form-control" min="0" name="file" id="imagen1" >
                         </div>
+                      
                          <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <span><i class="fa fa-dollar-sign"></i> Imagen 2</span>
                                 </div>
                             </div>
-                            <input type="file" class="form-control" min="0" name="file" id="imagen2">
+                            <input type="file" class="form-control" min="0" name="file2" id="imagen2">
                         </div>
                          <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -131,7 +140,7 @@
                                     <span><i class="fa fa-dollar-sign"></i> Imagen 3</span>
                                 </div>
                             </div>
-                            <input type="file" class="form-control" min="0" name="file" id="imagen3">
+                            <input type="file" class="form-control" min="0" name="file3" id="imagen3">
                         </div>
                         
                         -->

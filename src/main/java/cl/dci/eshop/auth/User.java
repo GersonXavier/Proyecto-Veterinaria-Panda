@@ -23,6 +23,47 @@ public class User implements UserDetails {
     @Column
     private String password;
     @Column
+    private String correo;
+    @Column
+    private String dni;
+    @Column
+    private String direccion;
+    @Column
+    private String telefono;
+    
+    public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	@Column
     private boolean isAccountNonExpired;
     @Column
     private boolean isAccountNonLocked;
@@ -49,9 +90,17 @@ public class User implements UserDetails {
 
     public User(String username,
                 String password,
+                String correo,
+                String dni,
+                String direccion,
+                String telefono,
                 ApplicationUserRole role) {
         this.username = username;
         this.password = password;
+        this.correo=correo;
+        this.dni=dni;
+        this.telefono=telefono;
+        this.direccion=direccion;
         this.isAccountNonExpired = true;
         this.isAccountNonLocked = true;
         this.isCredentialsNonExpired = true;

@@ -15,41 +15,49 @@ public class Mascota {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idMoscota;
+    private int id;
 	@Column
 	private String nombre;
 	@Column
 	private String tipo;
 	@Column
-	private int idDueño;
+	private int Dueño;
 	@Column
 	private int edad;
 	@Column
 	private double peso;
+	@Column
+	private String Foto1;
 	
 	
 	
 	
 	
 	
+	public String getFoto1() {
+		return Foto1;
+	}
+	public void setFoto1(String foto1) {
+		Foto1 = foto1;
+	}
 	public Mascota() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Mascota(int idMoscota, String nombre, String tipo, int idDueño, int edad, double peso) {
+	public Mascota(int id, String nombre, String tipo, int Dueño, int edad, double peso) {
 		super();
-		this.idMoscota = idMoscota;
+		this.id = id;
 		this.nombre = nombre;
 		this.tipo = tipo;
-		this.idDueño = idDueño;
+		this.Dueño = Dueño;
 		this.edad = edad;
 		this.peso = peso;
 	}
-	public int getidMoscota() {
-		return idMoscota;
+	public int getid() {
+		return id;
 	}
-	public void setidMoscota(int idMoscota) {
-		this.idMoscota = idMoscota;
+	public void setid(int id) {
+		this.id = id;
 	}
 	
 	public String getnombre() {
@@ -66,11 +74,11 @@ public class Mascota {
 		this.tipo = tipo;
 	}
 	
-	public int getidDueño() {
-		return idDueño;
+	public int getDueño() {
+		return Dueño;
 	}
-	public void setidDueño(int idDueño) {
-		this.idDueño = idDueño;
+	public void setDueño(int Dueño) {
+		this.Dueño = Dueño;
 	}
 	
 	public int getedad() {

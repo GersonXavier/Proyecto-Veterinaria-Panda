@@ -40,7 +40,7 @@ public class UserController {
         usuario.setPassword(password);
         userRepository.save(usuario);
         carritoRepository.save(c1);
-        return "redirect:/admin/productos";
+        return "redirect:/admin/usuarios";
     }
 
     
@@ -66,17 +66,17 @@ public class UserController {
 
         User user1 = new User("customer1",
                 password,
-        CUSTOMER);
+        password, password, password, password, CUSTOMER);
 
         User user2 = new User("customer2",
                 password,
-                CUSTOMER);
+                password, password, password, password, CUSTOMER);
         User user3 = new User("customer3",
                 password,
-                CUSTOMER);
+                password, password, password, password, CUSTOMER);
         User user4 = new User("admin",
                 password,
-                ADMIN);
+                password, password, password, password, ADMIN);
 
         Carrito c1 = new Carrito();
         Carrito c2 = new Carrito();

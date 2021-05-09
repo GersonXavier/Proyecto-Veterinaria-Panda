@@ -18,7 +18,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.Buffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -40,8 +50,66 @@ public class ProductoController {
 
     @PreAuthorize("hasAuthority('producto:write')")
     @PostMapping("/crear")
-    public String crearProducto(@ModelAttribute("producto") Producto producto){
-
+    public String crearProducto(@ModelAttribute("producto") Producto producto, @RequestParam("file") MultipartFile imagen,
+    		@RequestParam("file2") MultipartFile imagen2,@RequestParam("file3") MultipartFile imagen3){
+    
+    	if(!imagen.isEmpty()) {
+    		Path DirectorioImagenes = Paths.get("src//main//resources//static/images");
+    		String RutaAbsoluta = DirectorioImagenes.toFile().getAbsolutePath();
+    		
+    		try {
+				byte[] BytesImg = imagen.getBytes();
+				
+				Path rutaCompleta = Paths.get(RutaAbsoluta + "//" + imagen.getOriginalFilename());
+				
+				Files.write(rutaCompleta, BytesImg);
+				
+				producto.setFoto1(imagen.getOriginalFilename());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		
+    	}
+    	
+    	if(!imagen2.isEmpty()) {
+    		Path DirectorioImagenes = Paths.get("src//main//resources//static/images");
+    		String RutaAbsoluta = DirectorioImagenes.toFile().getAbsolutePath();
+    		
+    		try {
+				byte[] BytesImg = imagen2.getBytes();
+				
+				Path rutaCompleta = Paths.get(RutaAbsoluta + "//" + imagen2.getOriginalFilename());
+				
+				Files.write(rutaCompleta, BytesImg);
+				
+				producto.setFoto2(imagen2.getOriginalFilename());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		
+    	}
+    	
+    	if(!imagen3.isEmpty()) {
+    		Path DirectorioImagenes = Paths.get("src//main//resources//static/images");
+    		String RutaAbsoluta = DirectorioImagenes.toFile().getAbsolutePath();
+    		
+    		try {
+				byte[] BytesImg = imagen3.getBytes();
+				
+				Path rutaCompleta = Paths.get(RutaAbsoluta + "//" + imagen3.getOriginalFilename());
+				
+				Files.write(rutaCompleta, BytesImg);
+				
+				producto.setFoto3(imagen3.getOriginalFilename());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		
+    	}
+    	
         productoJpaRepository.save(producto);
         return "redirect:/admin/productos";
     }
@@ -58,7 +126,26 @@ public class ProductoController {
 
    
     @PostMapping("/crearMas")
-    public String crearMascota(@ModelAttribute("mascota") Mascota mascota){
+    public String crearMascota(@ModelAttribute("mascota") Mascota mascota, @RequestParam("fotoMas") MultipartFile masco){
+    	
+    	if(!masco.isEmpty()) {
+    		Path DirectorioImagenes = Paths.get("src//main//resources//static/images");
+    		String RutaAbsoluta = DirectorioImagenes.toFile().getAbsolutePath();
+    		
+    		try {
+				byte[] BytesImg = masco.getBytes();
+				
+				Path rutaCompleta = Paths.get(RutaAbsoluta + "//" + masco.getOriginalFilename());
+				
+				Files.write(rutaCompleta, BytesImg);
+				
+				mascota.setFoto1(masco.getOriginalFilename());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		
+    	}
 
         mascotajpaRepository.save(mascota);
         return "redirect:/admin/mascotas";

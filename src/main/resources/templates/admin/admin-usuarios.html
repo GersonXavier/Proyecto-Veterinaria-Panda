@@ -32,6 +32,11 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>Rol</th>
+                                <th>Correo</th>
+                                <th>Dni</th>
+                                <th>Direccion</th>
+                                <th>Telefono</th>
+                                
                                 <th>Opciones</th>
 
                             </tr>
@@ -40,6 +45,10 @@
                             <tr th:each="usuario: ${usuarios}">
                                 <td th:text="${usuario.username}"></td>
                                 <td th:text="${usuario.role}"></td>
+                                 <td th:text="${usuario.correo}"></td>
+                                  <td th:text="${usuario.dni}"></td>
+                                   <td th:text="${usuario.direccion}"></td>
+                                   <td th:text="${usuario.telefono}"></td>
 
                                 <td>
 
@@ -80,6 +89,46 @@
                                 </div>
                             </div>
                             <input type="text" placeholder="Nombre de usuario" th:field="*{username}" minlength="5">
+                        </div>
+                        <hr>
+                        
+                            <div class="input-group mb-3 justify-content-center">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i></span>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="Ingrese un correo" th:field="*{correo}" minlength="5">
+                        </div>
+                        <hr>
+                        
+                            <div class="input-group mb-3 justify-content-center">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i></span>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="ingrese su dni" th:field="*{dni}" minlength="5">
+                        </div>
+                        <hr>
+                        
+                            <div class="input-group mb-3 justify-content-center">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i></span>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="Ingrese su direccion" th:field="*{direccion}" minlength="5">
+                        </div>
+                        <hr>
+                        
+                            <div class="input-group mb-3 justify-content-center">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i></span>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="Ingrese su nro de telefono" th:field="*{telefono}" minlength="5">
                         </div>
                         <hr>
                         <div class="col">

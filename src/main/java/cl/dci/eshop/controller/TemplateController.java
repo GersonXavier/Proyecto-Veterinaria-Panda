@@ -56,10 +56,7 @@ public class TemplateController {
         return "login";
     }
 
-    @GetMapping("mascotas")
-    public String getMascotas() {
-    	return "mascotas";
-    }
+ 
     
     @GetMapping("courses")
     public String getCourses() {
@@ -205,6 +202,17 @@ public class TemplateController {
 
         modelo.addAttribute("mascota", new Mascota());
         return "mascotas";
+        
+    }
+    
+    @GetMapping("admin/mascotaLis")
+    public String getMascotasLista(Model modelo) {
+        basicSetup(modelo, "mascota lista");
+        List<Mascota> mascota = mascotaRepository.findAll();
+        modelo.addAttribute("mascotas", mascota);
+
+        modelo.addAttribute("mascota", new Mascota());
+        return "lista-mascota";
         
     }
 
