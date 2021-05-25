@@ -2,6 +2,7 @@ package cl.dci.eshop.auth;
 
 
 import cl.dci.eshop.model.Carrito;
+import cl.dci.eshop.model.Pedido;
 import cl.dci.eshop.security.ApplicationUserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,8 +31,12 @@ public class User implements UserDetails {
     private String direccion;
     @Column
     private String telefono;
+   
     
-    public String getCorreo() {
+    
+
+
+	public String getCorreo() {
 		return correo;
 	}
 

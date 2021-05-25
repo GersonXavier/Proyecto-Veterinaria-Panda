@@ -8,6 +8,7 @@ import cl.dci.eshop.model.ProductoCarrito;
 import cl.dci.eshop.model.servicio;
 import cl.dci.eshop.repository.CarritoRepository;
 import cl.dci.eshop.repository.MascotaRepository;
+import cl.dci.eshop.repository.PedidoRepository;
 import cl.dci.eshop.repository.ProductoCarritoRepository;
 import cl.dci.eshop.repository.ProductoRepository;
 import cl.dci.eshop.repository.ServicioRepository;
@@ -42,7 +43,8 @@ public class TemplateController {
     private ServicioRepository servicioRepository;
     @Autowired
     private MascotaRepository mascotaRepository;
-   
+    @Autowired 
+    private PedidoRepository pedidoRepository;
 
 
     @GetMapping()
@@ -106,10 +108,27 @@ public class TemplateController {
         basicSetup(modelo, "Carrito");
 
         Carrito carrito = getCurrentUser().getCarrito();
+        
 
         modelo.addAttribute("carrito", carrito);
         modelo.addAttribute("prodCars", getProductoCarritos());
+        modelo.addAttribute("pedido", pedidoRepository.findAll());
         return "carrito";
+    }
+    
+    @PreAuthorize("hasAuthority('carrito:manage')")
+    @GetMapping("pedido")
+    public String getPedido(Model modelo) {
+        basicSetup(modelo, "Carrito");
+
+        Carrito carrito = getCurrentUser().getCarrito();
+        
+        
+
+        modelo.addAttribute("carrito", carrito);
+        modelo.addAttribute("prodCars", getProductoCarritos());
+        modelo.addAttribute("pedido", pedidoRepository.findPedidoByUser(carrito.getUser().getId()));
+        return "pedido";
     }
 
     @GetMapping("checkout")
@@ -145,6 +164,9 @@ public class TemplateController {
 
         return "perfil";
     }
+    
+
+
 
     private User getCurrentUser() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

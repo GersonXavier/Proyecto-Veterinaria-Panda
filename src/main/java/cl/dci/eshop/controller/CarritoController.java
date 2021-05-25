@@ -2,13 +2,16 @@ package cl.dci.eshop.controller;
 
 import cl.dci.eshop.auth.User;
 import cl.dci.eshop.model.Carrito;
+import cl.dci.eshop.model.Pedido;
 import cl.dci.eshop.model.Producto;
 import cl.dci.eshop.model.ProductoCarrito;
 import cl.dci.eshop.model.servicio;
 import cl.dci.eshop.repository.CarritoRepository;
+import cl.dci.eshop.repository.PedidoRepository;
 import cl.dci.eshop.repository.ProductoCarritoRepository;
 import cl.dci.eshop.repository.ProductoRepository;
 import cl.dci.eshop.repository.ServicioRepository;
+import cl.dci.eshop.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -32,6 +35,9 @@ public class CarritoController {
     private ServicioRepository servicioRepository;
     @Autowired
     private ProductoCarritoRepository productoCarritoRepository;
+    @Autowired 
+    private UserRepository userRepository;
+    @Autowired PedidoRepository pedidoRepository;
 
     @PostMapping("/crear/{id}")
     public String agregarProducto(@PathVariable int id){
@@ -45,6 +51,21 @@ public class CarritoController {
         productoCarritoRepository.save(pc);
         carritoRepository.save(carrito);
         return "redirect:/carrito";
+    }
+    
+    
+    @PostMapping("/crearPed/{id}")
+    public String agregarPedido(@PathVariable int id){
+        System.out.println(id);
+        User user = userRepository.findById(id).orElse(null);
+       
+        Pedido pedido = new Pedido();
+        pedido.addPedido(user);
+
+       
+        pedidoRepository.save(pedido);
+        
+        return "redirect:/pedido";
     }
 
     @PreAuthorize("hasAuthority('carrito:manage')")

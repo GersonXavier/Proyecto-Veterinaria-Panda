@@ -22,7 +22,7 @@
             <div class="col-lg-9">
 
                 <div class="card mt-4">
-                    <img class="card-img-top img-fluid" src="https://i.pinimg.com/originals/95/89/7e/95897ef6976525a8aef50a6ddc0ed383.jpg" alt="">
+                    <img class="card-img-top img-fluid" th:src="@{'/images/'+${producto.foto1}}" >
                     <div class="card-body">
                         <h3 class="card-title" th:text="${producto.nombre}"></h3>
                         <h4>$<span th:text="${producto.precio}"></span></h4>

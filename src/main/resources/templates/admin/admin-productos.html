@@ -78,7 +78,7 @@
                 <div class="col-3"></div>
                 <div class="col-6 shadow-lg p-3 mb-5 bg-white rounded"><br>
                     <h2>Crear nuevo producto</h2> <br>
-                    <form th:action="@{/api/producto/crear}" th:object="${producto}" method="post" enctype="multipart/form-data">
+                    <form th:action="@{/api/producto/crear}" th:object="${producto}" method="post" enctype="multipart/form-data" >
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                             <input type="text" class="form-control" placeholder="Nombre del producto"
-                                   th:field="*{nombre}">
+                                   th:field="*{nombre}" id="nombre" required>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -94,7 +94,7 @@
                                     <span><i class="fa fa-dollar-sign"></i> Precio</span>
                                 </div>
                             </div>
-                            <input type="number" class="form-control" min="0" th:field="*{precio}" >
+                            <input type="number" class="form-control" min="0" th:field="*{precio}" id="precio" required >
                         </div>
                         
                           <div class="input-group mb-3">
@@ -103,7 +103,7 @@
                                     <span><i class="fa fa-keyboard"></i> Descripcion</span>
                                 </div>
                             </div>
-                            <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" th:field="*{descripcionSim}" ></textarea>
+                            <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" th:field="*{descripcionSim}" id="descripcion"></textarea>
                             
                         </div>
                         
@@ -113,7 +113,7 @@
                                     <span><i class="fa fa-keyboard"></i> Descripcion Completa</span>
                                 </div>
                             </div>
-                            <textarea rows="8" cols="40" placeholder="ingrese una descripcion" th:field="*{descripciomHtml}" ></textarea>
+                            <textarea rows="8" cols="40" placeholder="ingrese una descripcion" th:field="*{descripciomHtml}" id="descripcionhtml"></textarea>
                             
                         </div>
                      
@@ -155,6 +155,17 @@
 
     </div>
 </div>
+
+<script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
+
+<script>
+
+bootstrapValidate("#nombre","min:5:minimo 5 caracteres")
+bootstrapValidate("#precio","numeric:el precio tiene que ser tipo numerico")
+bootstrapValidate("#descripcion","min:8:La descripcion es obligatoria")
+bootstrapValidate("#descripcionhtml","min:20:minimo 20 caracteres")
+
+</script>
 <!-- Footer -->
 <footer th:replace="fxragments :: footer"></footer>
 
