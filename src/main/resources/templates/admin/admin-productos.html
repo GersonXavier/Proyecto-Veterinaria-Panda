@@ -34,9 +34,8 @@
                                 <th>Precio</th>
                                 <th>Descripcion</th>
                              
-                                  <th>Imagen1</th>
-                                   <th>Imagen2</th>
-                                    <th>Imagen3</th>
+                                  <th>Stock</th>
+                                  
                                      <th>Opciones</th>
 
                             </tr>
@@ -47,9 +46,8 @@
                                 <td th:text="${producto.precio}">Doe</td>
                                 <td th:text="${producto.descripcionSim}">Doe</td>
                                 
-                                <td th:text="${producto.foto1}">Doe</td>
-                                <td th:text="${producto.foto2}">Doe</td>
-                                <td th:text="${producto.foto3}">Doe</td>
+                                <td th:text="${producto.stock}">Doe</td>
+                              
 
                                 <td>
 
@@ -86,7 +84,7 @@
                                 </div>
                             </div>
                             <input type="text" class="form-control" placeholder="Nombre del producto"
-                                   th:field="*{nombre}" id="nombre" required>
+                                   th:field="*{nombre}" minlength="5" id="nombre" required >
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -95,6 +93,15 @@
                                 </div>
                             </div>
                             <input type="number" class="form-control" min="0" th:field="*{precio}" id="precio" required >
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-dollar-sign"></i> Stock</span>
+                                </div>
+                            </div>
+                            <input type="number" class="form-control" min="0" th:field="*{stock}" id="precio" required >
                         </div>
                         
                           <div class="input-group mb-3">

@@ -36,6 +36,8 @@ public class Producto {
     private String foto2;
     @Column
     private String foto3;
+    @Column
+    private int stock;
     
 
 
@@ -99,6 +101,8 @@ public class Producto {
 	public void setFoto3(String foto3) {
 		this.foto3 = foto3;
 	}
+	
+	
 
 	@OneToMany(mappedBy = "producto", cascade = CascadeType.MERGE)
     private List<ProductoCarrito> productoCarritos;
@@ -108,9 +112,11 @@ public class Producto {
         this.productoCarritos = new ArrayList<>();
     }
 
-    public Producto(String nombre, int precio){
+    public Producto(String nombre, int precio, int stock){
         this.nombre = nombre;
         this.precio = precio;
+        this.stock = stock;
+        
         //this.carritos = new ArrayList<>();
         this.productoCarritos = new ArrayList<>();
     }
@@ -159,7 +165,17 @@ public class Producto {
         this.precio = precio;
     }
 
-    @Override
+    public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+    
+  
+
+	@Override
     public String toString() {
         return "Producto{" +
                 "id=" + id +
@@ -172,7 +188,8 @@ public class Producto {
                   ", descricionHtml=" + descripciomHtml + '\'' +
                   ", foto1=" + foto1 + '\'' +
                   ", foto2=" + foto2 + '\'' +
-                  ", foto3=" + foto3 + 
+                  ", foto3=" + foto3 + '\'' +
+                   ", stock=" + stock +
                 //", carritos=" + carritos +
                 '}';
     }

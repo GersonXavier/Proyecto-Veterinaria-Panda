@@ -84,6 +84,7 @@ public class TemplateController {
     public String getCatalogo(Model modelo) {
 
         basicSetup(modelo, "Catálogo");
+       
         modelo.addAttribute("productos", productoRepository.findAll());
         modelo.addAttribute("carrito", carritoRepository.findById(42).orElse(null));
 
@@ -293,10 +294,10 @@ public class TemplateController {
 
     private void poblarBd() {
 
-        Producto p1 = new Producto("Producto 1", 2000);
-        Producto p2 = new Producto("Producto 2", 2500);
-        Producto p3 = new Producto("Producto 3", 3000);
-        Producto p4 = new Producto("Producto 4", 5000);
+        Producto p1 = new Producto("Producto 1", 2000,2000);
+        Producto p2 = new Producto("Producto 2", 2500,2500);
+        Producto p3 = new Producto("Producto 3", 3000,3000);
+        Producto p4 = new Producto("Producto 4", 5000,5000);
 
 
 
