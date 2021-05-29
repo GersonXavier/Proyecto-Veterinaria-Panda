@@ -30,13 +30,13 @@
                         <table class="table table-dark table-hover">
                             <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Precio</th>
-                                <th>Descripcion</th>
+                                <th>NOMBRE</th>
+                                <th>PRECIO</th>
+                                <th>DESCRIPCION</th>
                              
-                                  <th>Stock</th>
+                                  <th>STOCK</th>
                                   
-                                     <th>Opciones</th>
+                                     <th>OPCIONES</th>
 
                             </tr>
                             </thead>
@@ -75,12 +75,12 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6 shadow-lg p-3 mb-5 bg-white rounded"><br>
-                    <h2>Crear nuevo producto</h2> <br>
+                    <h2>CREAR NUEVO PRODUCTO</h2> <br>
                     <form th:action="@{/api/producto/crear}" th:object="${producto}" method="post" enctype="multipart/form-data" >
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <span><i class="fa fa-keyboard"></i> Nombre</span>
+                                    <span><i class="fa fa-keyboard"></i> NOMBRE</span>
                                 </div>
                             </div>
                             <input type="text" class="form-control" placeholder="Nombre del producto"
