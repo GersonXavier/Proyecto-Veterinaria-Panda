@@ -17,7 +17,7 @@
 							<div class="row">
 								<div class="col-xs-6">
 									<h5>
-										<i class="fa fa-shopping-cart"></i> Carrito de compra
+										<i class="fa fa-shopping-cart"></i> CARRITO DE COMPRA
 									</h5>
 								</div>
 
@@ -47,7 +47,7 @@
 										th:action="@{/api/carrito/{id}(id=${prodCarrito.id})}"
 										method="post">
 
-										<button type="submit" class="btn btn-danger">Quitar</button>
+										<button type="submit" class="btn btn-danger">QUITAR</button>
 									</form>
 								</div>
 								<div class="col-xs-2"></div>
@@ -59,7 +59,7 @@
 							<div class="text-center">
 								<div class="col-xs-9">
 									<h6 class="text-right">
-										Productos agregados: <span
+										PRODUCTOS AGREGADOS: <span
 											th:text="${carrito.cantidadProductos}"></span>
 									</h6>
 								</div>
@@ -79,7 +79,7 @@
 						<br>
 						<div class="col-xs-3" th:if="${carrito.cantidadProductos} &gt; 0">
 							<button type="button" class="btn btn-primary" data-toggle="modal"
-								data-target="#idcontenedor">Hacer Pedido</button>
+								data-target="#idcontenedor">HACER PEDIDO</button>
 						</div>
 					</div>
 				</div>
@@ -97,7 +97,7 @@
 		<div class="modal-dialog modal-dialog-centered modal-xl" >
 			<div class="modal-content">
 				<div class="modal-header">
-				<h2 class="modal-title">Registrar Pedido</h2>
+				<h2 class="modal-title">REGISTRAR PEDIDO</h2>
 				<button class="close" data-dismiss="modal">
 				<span>&times;</span>
 				</button>
@@ -107,7 +107,7 @@
 				
 				 
 				
-				<h3>Cliente: <span th:text="${carrito.user.username}"></span></h3>
+				<h3>CLIENTE: <span th:text="${carrito.user.username}"></span></h3>
 				<br><br>
 				
 				  <div id="home" class="container tab-pane active"><br>
@@ -115,13 +115,13 @@
                 <div class="col-2"></div>
                 <div class="col-8 shadow-lg p-3 mb-5 bg-white rounded">
                     <div class="container">
-                        <h2>Lista de productos</h2>
+                        <h2>LISTA DE PRODUCTOS</h2>
                         <table class="table table-dark table-hover">
                             <thead>
                             <tr>
                               <th>Id</th>
-                                <th>Nombre</th>
-                                <th>Precio</th>
+                                <th>NOMBRE</th>
+                                <th>PRECIO</th>
                               
                              
                             
@@ -130,9 +130,9 @@
                             </thead>
                             <tbody>
                             <tr th:each="prodCarrito: ${prodCars}">
-                                  <td th:text="${prodCarrito.producto.id}">Doe</td>
-                                <td th:text="${prodCarrito.producto.nombre}">John</td>
-                                <td th:text="'$'+${prodCarrito.producto.precio}">Doe</td>
+                                  <td th:text="${prodCarrito.producto.id}">DOE</td>
+                                <td th:text="${prodCarrito.producto.nombre}">JOHN</td>
+                                <td th:text="'$'+${prodCarrito.producto.precio}">DOE</td>
                   
 
                                 <td>
@@ -153,7 +153,7 @@
                             </tr>
                             </tbody>
                         </table>
-                        <h3>Total a pagar: <span th:text="'$'+${carrito.precioTotal}"></span></h3>
+                        <h3>TOTAL A PAGAR: <span th:text="'$'+${carrito.precioTotal}"></span></h3>
                     </div>
                 </div>
                 <div class="col-2"></div>
@@ -163,7 +163,7 @@
 				</div>
 				<div class="modal-footer">
 				
-				<button class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				<button class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
 			       <form action="#" th:action="@{/api/carrito/crearPed/{id}(id=${carrito.user.id})}" method="post">
                                             <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#pedido" >
                                                 <i class="fa fa-edit"></i>
