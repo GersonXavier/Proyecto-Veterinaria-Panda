@@ -7,15 +7,15 @@
 <nav th:replace="fragments :: navigation-admin"></nav>
 
 <div class="container">
-    <h2>Administracion de Servicios</h2>
+    <h2>ADMINISTRACION DE SERVICIOS</h2>
     <br>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#home">Lista de servicios</a>
+            <a class="nav-link active" data-toggle="tab" href="#home">LISTA DE SERVICIOS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu1">Crear nuevo servicio</a>
+            <a class="nav-link" data-toggle="tab" href="#menu1">CREAR NUEVO SERVICIO</a>
         </li>
     </ul>
 
@@ -26,7 +26,7 @@
                 <div class="col-2"></div>
                 <div class="col-8 shadow-lg p-3 mb-5 bg-white rounded">
                     <div class="container">
-                        <h2>Lista de servicios</h2>
+                        <h2>LISTA DE SERVICIOS</h2>
                         <table class="table table-dark table-hover">
                             <thead>
                             <tr>
@@ -76,12 +76,12 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6 shadow-lg p-3 mb-5 bg-white rounded"><br>
-                    <h2>Crear nuevo producto</h2> <br>
+                    <h2>CREAR NUEVO PRODUCTO</h2> <br>
                     <form th:action="@{/api/producto/crearSer}" th:object="${servicio}" method="post" enctype="multipart/form-data">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <span><i class="fa fa-keyboard"></i> Nombre</span>
+                                    <span><i class="fa fa-keyboard"></i> NOMBRE</span>
                                 </div>
                             </div>
                             <input type="text" class="form-control" placeholder="Nombre del producto"
@@ -90,7 +90,7 @@
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <span><i class="fa fa-dollar-sign"></i> Precio</span>
+                                    <span><i class="fa fa-dollar-sign"></i> PRECIO</span>
                                 </div>
                             </div>
                             <input type="number" class="form-control" min="0" th:field="*{precio}" >
@@ -99,7 +99,7 @@
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <span><i class="fa fa-keyboard"></i> Descripcion</span>
+                                    <span><i class="fa fa-keyboard"></i> DESCRIPCION</span>
                                 </div>
                             </div>
                             <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" th:field="*{descripcion}"  ></textarea>
@@ -109,7 +109,7 @@
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <span><i class="fa fa-keyboard"></i> Horario</span>
+                                    <span><i class="fa fa-keyboard"></i> HORARIO</span>
                                 </div>
                             </div>
                               <input type="text" class="form-control" placeholder="Nombre del producto"
@@ -120,14 +120,14 @@
                          <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <span><i class="fa fa-dollar-sign"></i> Fecha</span>
+                                    <span><i class="fa fa-dollar-sign"></i> FECHA</span>
                                 </div>
                             </div>
                              <input type="text" class="form-control" min="0" th:field="*{fecha}" > >
                         </div>
                         
                         
-                        <button type="submit" class="btn btn-success">Agregar Nuevo Servicio</button>
+                        <button type="submit" class="btn btn-success">AGREGAR NUEVO SERVICIO</button>
                     </form>
                     <br>
                 </div>
