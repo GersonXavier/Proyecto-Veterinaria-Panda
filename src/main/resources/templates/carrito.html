@@ -29,7 +29,7 @@
 						<hr>
 						<div class="row" th:each="prodCarrito: ${prodCars}">
 							<div class="col-xs-2">
-								<img class="img-responsive" th:src="@{'images/' + ${prodCarrito.producto.foto1}}" >
+								<img class="img-responsive" th:src="@{'images/' + ${prodCarrito.producto.foto1}}" width="400px" >
 							</div>
 							<div class="col-xs-4">
 								<h4 class="product-name">

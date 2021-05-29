@@ -3,6 +3,7 @@ package cl.dci.eshop.controller;
 import cl.dci.eshop.auth.User;
 import cl.dci.eshop.model.Carrito;
 import cl.dci.eshop.model.Mascota;
+import cl.dci.eshop.model.Pedido;
 import cl.dci.eshop.model.Producto;
 import cl.dci.eshop.model.ProductoCarrito;
 import cl.dci.eshop.model.servicio;
@@ -131,6 +132,12 @@ public class TemplateController {
         modelo.addAttribute("pedido", pedidoRepository.findPedidoByUser(carrito.getUser().getId()));
         return "pedido";
     }
+    
+    
+
+    
+    
+    
 
     @GetMapping("checkout")
     public String getCheckout(Model modelo) {
@@ -203,6 +210,8 @@ public class TemplateController {
         modelo.addAttribute("usuario", new User());
         return "admin/admin-usuarios";
     }
+    
+  
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("admin/productos")
@@ -246,6 +255,8 @@ public class TemplateController {
     @GetMapping("admin/pedidos")
     public String getAdminPedidos(Model modelo) {
         basicSetup(modelo, "Administrar pedidos");
+        List<Pedido> lista = pedidoRepository.findAll();
+        modelo.addAttribute("pedido", lista);
         return "admin/admin-pedidos";
     }
 
