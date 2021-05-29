@@ -101,7 +101,7 @@
                                     <span><i class="fa fa-dollar-sign"></i> Stock</span>
                                 </div>
                             </div>
-                            <input type="number" class="form-control" min="0" th:field="*{stock}" id="precio" required >
+                            <input type="number" class="form-control" min="0" th:field="*{stock}" id="precio" required pattern="[1-100]" >
                         </div>
                         
                           <div class="input-group mb-3">
@@ -110,7 +110,7 @@
                                     <span><i class="fa fa-keyboard"></i> Descripcion</span>
                                 </div>
                             </div>
-                            <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" th:field="*{descripcionSim}" id="descripcion"></textarea>
+                            <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" th:field="*{descripcionSim}" id="descripcion" minlength=10  ></textarea>
                             
                         </div>
                         
@@ -120,7 +120,7 @@
                                     <span><i class="fa fa-keyboard"></i> Descripcion Completa</span>
                                 </div>
                             </div>
-                            <textarea rows="8" cols="40" placeholder="ingrese una descripcion" th:field="*{descripciomHtml}" id="descripcionhtml"></textarea>
+                            <textarea rows="8" cols="40" placeholder="ingrese una descripcion" th:field="*{descripciomHtml}" id="descripcionhtml" minlength=10></textarea>
                             
                         </div>
                      

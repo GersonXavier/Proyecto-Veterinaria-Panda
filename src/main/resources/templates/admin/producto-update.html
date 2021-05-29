@@ -43,6 +43,63 @@
                     </div>
                     <input type="number" min="0" th:field="*{precio}">
                 </div>
+                   
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-dollar-sign"></i> Stock</span>
+                                </div>
+                            </div>
+                            <input type="number" class="form-control" min="0" th:field="*{stock}" id="precio" required pattern="[1-100]" >
+                        </div>
+                        
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i> Descripcion</span>
+                                </div>
+                            </div>
+                            <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" th:field="*{descripcionSim}" id="descripcion" minlength=10  ></textarea>
+                            
+                        </div>
+                        
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i> Descripcion Completa</span>
+                                </div>
+                            </div>
+                            <textarea rows="8" cols="40" placeholder="ingrese una descripcion" th:field="*{descripciomHtml}" id="descripcionhtml" minlength=10></textarea>
+                            
+                        </div>
+                     
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-dollar-sign"></i> Imagen 1</span>
+                                </div>
+                            </div>
+                            <input type="file" class="form-control" min="0" name="file" id="imagen1" >
+                        </div>
+                      
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-dollar-sign"></i> Imagen 2</span>
+                                </div>
+                            </div>
+                            <input type="file" class="form-control" min="0" name="file2" id="imagen2">
+                        </div>
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-dollar-sign"></i> Imagen 3</span>
+                                </div>
+                            </div>
+                            <input type="file" class="form-control" min="0" name="file3" id="imagen3">
+                        </div>
+                        
+                
                 <button type="submit" class="btn btn-success">Editar producto</button>
                 <a href="/admin/productos">
                     <button type="button" class="btn btn-danger">Cancelar y volver</button>
