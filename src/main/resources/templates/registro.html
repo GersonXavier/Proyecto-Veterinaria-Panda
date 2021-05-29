@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <div class="container">
-    <br>  <p class="text-center">Si no quieres registrarte, <a href="/home"> ir a la página</a></p>
+    <br>  <p class="text-center">SI NO QUIERES REGISTRARTE, <a href="/home"> IR A LA PAGINA</a></p>
     <hr>
 
 
@@ -12,13 +12,13 @@
 
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
-            <h4 class="card-title mt-3 text-center">Crear una nueva cuenta</h4>
+            <h4 class="card-title mt-3 text-center">CREAR UNA CUENTA</h4>
 
             <div><br>
                 <div class="row">
 
                     <div class="col-12 shadow-lg p-3 mb-5 bg-white rounded"><br>
-                        <h2>Crear nuevo usuario</h2> <br>
+                        <h2>CREAR NUEVO USUSARIO</h2> <br>
                         <form th:action="@{/api/usuario/registrar}" th:object="${usuario}" method="post"
                               class="text-center justify-content-center" >
                             <div class="input-group mb-3 justify-content-center">
@@ -75,7 +75,7 @@
                                 <!-- checkbox que nos permite activar o desactivar la opcion -->
                                 <div style="margin-top:10px;">
                                     <input type="checkbox" id="mostrar_contrasena" title="clic para mostrar contraseña"/>
-                                    &nbsp;&nbsp;Mostrar Contraseña
+                                    &nbsp;&nbsp;MOSTRAR CONTRASEÑA
                                 </div>
                             </div>
                             <div class="input-group mb-3 justify-content-center">
@@ -96,7 +96,7 @@
                                 <input type="password" placeholder="Confirmar Contraseña" id="confirm_password" required>
                             </div>
                             <br>
-                            <button type="submit" class="btn btn-success">Registrarse en el sistema</button>
+                            <button type="submit" class="btn btn-success">REGISTRARSE EN EL SISTEMA</button>
                         </form>
                         <br>
                     </div>

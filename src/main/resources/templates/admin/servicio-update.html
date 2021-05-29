@@ -15,7 +15,7 @@
 <div class="row">
     <div class="col-3"></div>
     <div class="col-6 shadow-lg p-3 mb-5 bg-white rounded"><br>
-        <h2>Editar producto</h2> <br>
+        <h2>EDITAR PRODUCTO</h2> <br>
         <div class="input-group mb-3 justify-content-center">
             <form th:action="@{/api/producto/updateSer}" th:object="${servicio}" method="post">
                 <div class="input-group mb-3">
@@ -30,7 +30,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                            <span><i class="fa fa-keyboard"></i> Nombre</span>
+                            <span><i class="fa fa-keyboard"></i> NOMBRE</span>
                         </div>
                     </div>
                     <input type="text" placeholder="Nombre del producto" th:field="*{nombre}">
@@ -38,14 +38,46 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                            <span><i class="fa fa-dollar-sign"></i> Precio</span>
+                            <span><i class="fa fa-dollar-sign"></i> PRECIO</span>
                         </div>
                     </div>
                     <input type="number" min="0" th:field="*{precio}">
                 </div>
-                <button type="submit" class="btn btn-success">Editar producto</button>
+                
+                     <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i> DESCRIPCION</span>
+                                </div>
+                            </div>
+                            <textarea  rows="5" cols="20" placeholder="ingrese una breve descripcion" th:field="*{descripcion}" id="descripcion" required minlength=8 ></textarea>
+                            
+                        </div>
+                        
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i> HORARIO</span>
+                                </div>
+                            </div>
+                              <input type="text" class="form-control" placeholder="Nombre del producto"
+                                   th:field="*{horario}" id="horario" required  >
+                            
+                        </div>
+                        
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-dollar-sign"></i> FECHA</span>
+                                </div>
+                            </div>
+                             <input type="text" class="form-control" min="0" th:field="*{fecha}" required id="fecha"> 
+                        </div>
+                
+                
+                <button type="submit" class="btn btn-success">EDITAR PRODUCTO</button>
                 <a href="/admin/servicios">
-                    <button type="button" class="btn btn-danger">Cancelar y volver</button>
+                    <button type="button" class="btn btn-danger">CANCELAR Y VOLVER</button>
                 </a>
             </form>
         </div>

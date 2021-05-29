@@ -1,12 +1,8 @@
 package cl.dci.eshop.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -31,67 +27,93 @@ public class Mascota {
 	
 	
 	
-	
-	
-	
-	public String getFoto1() {
-		return Foto1;
-	}
-	public void setFoto1(String foto1) {
-		Foto1 = foto1;
-	}
 	public Mascota() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
-	public Mascota(int id, String nombre, String tipo, int Dueño, int edad, double peso) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.tipo = tipo;
-		this.Dueño = Dueño;
-		this.edad = edad;
-		this.peso = peso;
-	}
-	public int getid() {
+
+
+
+	public int getId() {
 		return id;
 	}
-	public void setid(int id) {
+
+
+
+	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public String getnombre() {
+
+
+
+	public String getNombre() {
 		return nombre;
 	}
-	public void setnombre(String nombre) {
+
+
+
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public String gettipo() {
+
+
+
+	public String getTipo() {
 		return tipo;
 	}
-	public void settipo(String tipo) {
+
+
+
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
+
+
+
 	public int getDueño() {
 		return Dueño;
 	}
-	public void setDueño(int Dueño) {
-		this.Dueño = Dueño;
+
+
+
+	public void setDueño(int dueño) {
+		Dueño = dueño;
 	}
-	
-	public int getedad() {
+
+
+
+	public int getEdad() {
 		return edad;
 	}
-	public void setedad(int edad) {
+
+
+
+	public void setEdad(int edad) {
 		this.edad = edad;
 	}
-	
-	public double getpeso() {
+
+
+
+	public double getPeso() {
 		return peso;
 	}
-	public void setpeso(double peso) {
+
+
+
+	public void setPeso(double peso) {
 		this.peso = peso;
 	}
+
+
+
+	public String getFoto1() {
+		return Foto1;
+	}
+
+
+
+	public void setFoto1(String foto1) {
+		Foto1 = foto1;
+	}
+	
+	
 }

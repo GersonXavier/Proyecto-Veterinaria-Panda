@@ -12,22 +12,24 @@
                 <div class="col-2"></div>
                 <div class="col-8 shadow-lg p-3 mb-5 bg-white rounded">
                     <div class="container">
-                        <h2>Lista de productos</h2>
+                        <h2>LISTA DE MASCOTAS</h2>
                         <table class="table table-dark table-hover">
                             <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Precio</th>
-                                <th>Opciones</th>
+                                <th>NOMBRE</th>
+                                <th>TIPO</th>
+                                <th>EDAD</th>
+                                <th>PESO</th>
+                                <th>OPCIONES</th>
 
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="mascotax: ${mascotas}">
-                                <td th:text="${mascotax.nombre}">John</td>
-                                <td th:text="${mascotax.tipo}">Doe</td>
-                                <td th:text="${mascotax.edad}">Doe</td>
-                                <td th:text="${mascotax.peso}">Doe</td>
+                                <td th:text="${mascotax.nombre}">JOHN</td>
+                                <td th:text="${mascotax.tipo}">DOE</td>
+                                <td th:text="${mascotax.edad}">DOE</td>
+                                <td th:text="${mascotax.peso}">DOE</td>
 
                                 <td>
                                 <!--  

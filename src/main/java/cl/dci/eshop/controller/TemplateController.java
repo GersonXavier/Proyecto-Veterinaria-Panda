@@ -145,6 +145,18 @@ public class TemplateController {
 
         return "home";
     }
+    
+    
+    @GetMapping("admin/mascotaLis")
+    public String getMascotasLista(Model modelo) {
+       
+        List<Mascota> mascota = mascotaRepository.findAll();
+        modelo.addAttribute("mascotas", mascota);
+
+        
+        return "lista-mascota";
+        
+    }
 
 
     @GetMapping("registro")
@@ -228,16 +240,7 @@ public class TemplateController {
         
     }
     
-    @GetMapping("admin/mascotaLis")
-    public String getMascotasLista(Model modelo) {
-        basicSetup(modelo, "mascota lista");
-        List<Mascota> mascota = mascotaRepository.findAll();
-        modelo.addAttribute("mascotas", mascota);
-
-        modelo.addAttribute("mascota", new Mascota());
-        return "lista-mascota";
-        
-    }
+   
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("admin/pedidos")

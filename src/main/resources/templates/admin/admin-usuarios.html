@@ -7,15 +7,15 @@
 <nav th:replace="fragments :: navigation-admin"></nav>
 
 <div class="container">
-    <h2>Administración de usuarios</h2>
+    <h2>ADMINISTRACION DE USUARIOS</h2>
     <br>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#home">Lista de usuarios</a>
+            <a class="nav-link active" data-toggle="tab" href="#home">LISTA DE USUARIOS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu1">Crear nuevo usuario</a>
+            <a class="nav-link" data-toggle="tab" href="#menu1">CREAR UN NUEVO USUARIO</a>
         </li>
     </ul>
 
@@ -26,18 +26,18 @@
                 <div class="col-2"></div>
                 <div class="col-8 shadow-lg p-3 mb-5 bg-white rounded">
                     <div class="container">
-                        <h2>Lista de usuarios</h2>
+                        <h2>LISTA DE USUARIOS</h2>
                         <table class="table table-dark table-hover">
                             <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Rol</th>
-                                <th>Correo</th>
-                                <th>Dni</th>
-                                <th>Direccion</th>
-                                <th>Telefono</th>
+                                <th>NOMBRE</th>
+                                <th>ROL</th>
+                                <th>CORREO</th>
+                                <th>DNI</th>
+                                <th>DIRECCION</th>
+                                <th>TELEFONO</th>
                                 
-                                <th>Opciones</th>
+                                <th>OPCIONES</th>
 
                             </tr>
                             </thead>
@@ -79,7 +79,7 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6 shadow-lg p-3 mb-5 bg-white rounded"><br>
-                    <h2>Crear nuevo usuario</h2> <br>
+                    <h2>CREAR UN NUEVO USUARIO</h2> <br>
                     <form th:action="@{/api/usuario/crear}" th:object="${usuario}" method="post"
                           class="text-center justify-content-center">
                         <div class="input-group mb-3 justify-content-center">
@@ -88,7 +88,7 @@
                                     <span><i class="fa fa-keyboard"></i></span>
                                 </div>
                             </div>
-                            <input type="text" placeholder="Nombre de usuario" th:field="*{username}" minlength="5">
+                            <input type="text" placeholder="Nombre de usuario" th:field="*{username}" minlength="5" id="nombre" required minlength=5>
                         </div>
                         <hr>
                         
@@ -98,7 +98,7 @@
                                     <span><i class="fa fa-keyboard"></i></span>
                                 </div>
                             </div>
-                            <input type="text" placeholder="Ingrese un correo" th:field="*{correo}" minlength="5">
+                            <input type="text" placeholder="Ingrese un correo" th:field="*{correo}" minlength="5" id="correo" required>
                         </div>
                         <hr>
                         
@@ -108,7 +108,7 @@
                                     <span><i class="fa fa-keyboard"></i></span>
                                 </div>
                             </div>
-                            <input type="text" placeholder="ingrese su dni" th:field="*{dni}" minlength="5">
+                            <input type="text" placeholder="ingrese su dni" th:field="*{dni}" minlength="5" id="dni" minlength=9>
                         </div>
                         <hr>
                         
@@ -118,7 +118,7 @@
                                     <span><i class="fa fa-keyboard"></i></span>
                                 </div>
                             </div>
-                            <input type="text" placeholder="Ingrese su direccion" th:field="*{direccion}" minlength="5">
+                            <input type="text" placeholder="Ingrese su direccion" th:field="*{direccion}" minlength="5" id="direccion" minlength=5>
                         </div>
                         <hr>
                         
@@ -128,7 +128,7 @@
                                     <span><i class="fa fa-keyboard"></i></span>
                                 </div>
                             </div>
-                            <input type="text" placeholder="Ingrese su nro de telefono" th:field="*{telefono}" minlength="5">
+                            <input type="text" placeholder="Ingrese su nro de telefono" th:field="*{telefono}" minlength="5" id="telefono" minlength=5>
                         </div>
                         <hr>
                         <div class="col">
@@ -158,7 +158,7 @@
                         <div class="row">
                             <div class="col-3"></div>
                             <div class="col-6">
-                                <label for="sel1">Seleccione el rol del usuario:</label><br>
+                                <label for="sel1">SELECCIONE EL ROL DEL USUARIO:</label><br>
                                 <div class="input-group mb-3 justify-content-center">
 
                                     <select class="form-control" id="sel1" th:field="*{role}">
@@ -169,7 +169,7 @@
                             </div>
                             <div class="col-3"></div>
                         </div>
-                        <button type="submit" class="btn btn-success">Agregar nuevo usuario</button>
+                        <button type="submit" class="btn btn-success">AGREGAR UN NUEVO USUARIO</button>
                     </form>
                     <br>
                 </div>
@@ -180,6 +180,19 @@
 
     </div>
 </div>
+
+<script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
+
+<script>
+
+bootstrapValidate("#nombre","min:5:Minimo 5 caracteres")
+bootstrapValidate("#correo","email:Ingrese in correo valido")
+bootstrapValidate("#dni","min:8:Ingrese los 8 dijitos")
+bootstrapValidate("#direccion","min:10:Minimo 10 caracteres")
+bootstrapValidate("#telefono","min:9:Ingrese 9 dijitos para el telefono")
+
+</script>
+
 
 <!-- Footer -->
 <footer th:replace="fragments :: footer"></footer>

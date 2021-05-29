@@ -16,26 +16,26 @@
 			<form class="form-container" th:action="@{/api/producto/crearMas}" th:object="${mascota}" method="post" enctype="multipart/form-data">
 			<h2>REGISTRAR MASCOTA</h2> <br>
 			  <div class="form-group">
-			    <label for="exampleInputEmail1">Nombre de la Mascota</label>
-			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  th:field="*{nombre}">
+			    <label for="exampleInputEmail1">NOMBRE DE LA MASCOTA</label>
+			    <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp"  th:field="*{nombre}" minlength=2>
 			   <!--   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputPassword1">Tipo de la Moscota</label>
-			    <input type="text" class="form-control" id="exampleInputPassword1"  th:field="*{tipo}">
+			    <label for="exampleInputPassword1">TIPO DE LA MASCOTA</label>
+			    <input type="text" class="form-control" id="tipo"  th:field="*{tipo}" required>
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputPassword1">Edad en meses</label>
-			    <input type="text" class="form-control" id="exampleInputPassword1"  th:field="*{edad}">
+			    <label for="exampleInputPassword1">EDAD EN MESES</label>
+			    <input type="number" class="form-control" id="edad"  th:field="*{edad}" required>
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputPassword1">Peso</label>
-			    <input type="text" class="form-control" id="exampleInputPassword1"  th:field="*{peso}">
+			    <label for="exampleInputPassword1">PESO</label>
+			    <input type="number" class="form-control" id="peso"  th:field="*{peso}" required>
 			  </div>
 			  <div class="input-group mb-3">
-                 <input type="file" class="" min="0" name="fotoMas" id="imagen" >
-              </div><a href="/admin/mascotaLis">Lista Mascotas</a>
-			 <button type="submit" class="btn btn-success">Agregar nueva mascota</button>
+                 <input type="file" class="" min="0" name="fotoMas" id="imagen" requred >
+              </div><a href="/admin/mascotaLis">LISTA DE MASCOTAS</a>
+			 <button type="submit" class="btn btn-success">AGREGAR NUEVA MASCOTA</button>
 			 	
 			</form>
 		</div>
@@ -49,5 +49,19 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
+
+<script>
+
+bootstrapValidate("#nombre","min:3:Minimo 3 caracteres")
+bootstrapValidate("#tipo","min:3:Minimo 3 letras")
+bootstrapValidate("#edad","numeric:Este campo es numerico")
+bootstrapValidate("#peso","numeric:Este campo es numerico")
+
+</script>
+
+
 </body>
 </html>
