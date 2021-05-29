@@ -16,26 +16,26 @@
 			<form class="form-container" th:action="@{/api/producto/crearMas}" th:object="${mascota}" method="post" enctype="multipart/form-data">
 			<h2>REGISTRAR MASCOTA</h2> <br>
 			  <div class="form-group">
-			    <label for="exampleInputEmail1">Nombre de la Mascota</label>
+			    <label for="exampleInputEmail1">NOMBRE DE LA MASCOTA</label>
 			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  th:field="*{nombre}">
 			   <!--   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputPassword1">Tipo de la Moscota</label>
+			    <label for="exampleInputPassword1">TIPO DE LA MASCOTA</label>
 			    <input type="text" class="form-control" id="exampleInputPassword1"  th:field="*{tipo}">
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputPassword1">Edad en meses</label>
+			    <label for="exampleInputPassword1">EDAD EN MESES</label>
 			    <input type="text" class="form-control" id="exampleInputPassword1"  th:field="*{edad}">
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputPassword1">Peso</label>
+			    <label for="exampleInputPassword1">PESO</label>
 			    <input type="text" class="form-control" id="exampleInputPassword1"  th:field="*{peso}">
 			  </div>
 			  <div class="input-group mb-3">
                  <input type="file" class="" min="0" name="fotoMas" id="imagen" >
-              </div><a href="/admin/mascotaLis">Lista Mascotas</a>
-			 <button type="submit" class="btn btn-success">Agregar nueva mascota</button>
+              </div><a href="/admin/mascotaLis">LISTA DE MASCOTAS</a>
+			 <button type="submit" class="btn btn-success">AGREGAR NUEVA MASCOTA</button>
 			 	
 			</form>
 		</div>
