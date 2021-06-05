@@ -2,6 +2,134 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
+<style>
+
+body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-color: #8C9EFF;
+    background-repeat: no-repeat
+}
+
+.card {
+    z-index: 0;
+    background-color: #ECEFF1;
+    padding-bottom: 20px;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    border-radius: 10px
+}
+
+.top {
+    padding-top: 40px;
+    padding-left: 13% !important;
+    padding-right: 13% !important
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: #455A64;
+    padding-left: 0px;
+    margin-top: 30px
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 13px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+
+#progressbar .step0:before {
+    font-family: FontAwesome;
+    content: "\f10c";
+    color: #fff
+}
+
+#progressbar li:before {
+    width: 40px;
+    height: 40px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    background: #C5CAE9;
+    border-radius: 50%;
+    margin: auto;
+    padding: 0px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 12px;
+    background: #C5CAE9;
+    position: absolute;
+    left: 0;
+    top: 16px;
+    z-index: -1
+}
+
+#progressbar li:last-child:after {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: absolute;
+    left: -50%
+}
+
+#progressbar li:nth-child(2):after,
+#progressbar li:nth-child(3):after {
+    left: -50%
+}
+
+#progressbar li:first-child:after {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    left: 50%
+}
+
+#progressbar li:last-child:after {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px
+}
+
+#progressbar li:first-child:after {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #651FFF
+}
+
+#progressbar li.active:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+.icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px
+}
+
+.icon-content {
+    padding-bottom: 20px
+}
+
+@media screen and (max-width: 992px) {
+    .icon-content {
+        width: 50%
+    }
+}
+
+</style>
+
 <body>
 <!-- Navigation -->
 <nav th:replace="fragments :: navigation-shop"></nav>
@@ -64,6 +192,83 @@
 
     </div>
     
+    
+    
+    	<div class="modal fade" id="idcontenedor" tabindex="-1">
+
+		<div class="modal-dialog modal-dialog-centered modal-xl" >
+			<div class="modal-content">
+				<div class="modal-header">
+				<h2 class="modal-title">Registrar Pedido</h2>
+				<button class="close" data-dismiss="modal">
+				<span>&times;</span>
+				</button>
+				</div> 
+				
+				<div class="modal-body">
+				
+				 
+				
+				<div class="container px-1 px-md-4 py-5 mx-auto">
+    <div class="card">
+        <div class="row d-flex justify-content-between px-3 top">
+            <div class="d-flex">
+                <h5>PEDIDO <span class="text-primary font-weight-bold" >Cliente</span></h5>
+            </div>
+            <div class="d-flex flex-column text-sm-right">
+                <p class="mb-0">FECHA <span>05/06/21</span></p>
+                <p>USPS <span class="font-weight-bold">234094567242423422898</span></p>
+            </div>
+        </div> <!-- Add class 'active' to progress -->
+        <div class="row d-flex justify-content-center">
+            <div class="col-12">
+                <ul id="progressbar" class="text-center">
+                    <li class="active step0" id="uno"></li>
+                    <li class="step0" id="dos"></li>
+                    <li class="step0" id="tres"></li>
+                    <li class="step0" id="cuatro"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row justify-content-between top">
+            <div class="row d-flex icon-content"> <img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+                <div class="d-flex flex-column">
+                    <p class="font-weight-bold">Order<br>Processed</p>
+                </div>
+            </div>
+            <div class="row d-flex icon-content"> <img class="icon" src="https://i.imgur.com/u1AzR7w.png">
+                <div class="d-flex flex-column">
+                    <p class="font-weight-bold">Order<br>Shipped</p>
+                </div>
+            </div>
+            <div class="row d-flex icon-content"> <img class="icon" src="https://i.imgur.com/TkPm63y.png">
+                <div class="d-flex flex-column">
+                    <p class="font-weight-bold">Order<br>En Route</p>
+                </div>
+            </div>
+            <div class="row d-flex icon-content"> <img class="icon" src="https://i.imgur.com/HdsziHP.png">
+                <div class="d-flex flex-column">
+                    <p class="font-weight-bold">Order<br>Arrived</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-secondary"  id="estado">estado</button>
+</div>
+				</div>
+				<div class="modal-footer">
+				
+				<button class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+			     
+                    
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+    
+    
 
 
 
@@ -71,6 +276,67 @@
 <footer th:replace="fragments :: footer"></footer>
 
 
+
+
 </body>
+
+<script>
+$(document).ready(function () {
+const uno = document.getElementById("uno");
+const dos = document.getElementById("dos");
+const tres = document.getElementById("tres");
+const cuatro = document.getElementById("cuatro");
+const estado =document.getElementById('estado');
+
+uno.addEventListener('click', function(){
+	if(uno.classList.contains('active')){
+		uno.classList.remove('active');
+		
+	}else{
+		uno.classList.add('active')
+		
+	}
+});
+
+
+dos.addEventListener('click', function(){
+	if(dos.classList.contains('active')){
+		dos.classList.remove('active');
+		
+	}else{
+		dos.classList.add('active')
+		
+	}
+});
+
+
+tres.addEventListener('click', function(){
+	if(tres.classList.contains('active')){
+		tres.classList.remove('active');
+		
+	}else{
+		tres.classList.add('active')
+		
+	}
+});
+
+
+cuatro.addEventListener('click', function(){
+	if(cuatro.classList.contains('active')){
+		cuatro.classList.remove('active');
+		
+	}else{
+		cuatro.classList.add('active')
+		
+	}
+});
+
+
+
+
+});
+
+
+</script>
 
 </html>

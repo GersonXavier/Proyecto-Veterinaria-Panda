@@ -133,7 +133,20 @@ public class TemplateController {
         return "pedido";
     }
     
-    
+    @PreAuthorize("hasAuthority('carrito:manage')")
+    @GetMapping("detallePed")
+    public String getPedidoDetalle(Model modelo) {
+        basicSetup(modelo, "Carrito");
+
+        Carrito carrito = getCurrentUser().getCarrito();
+        
+        
+
+        modelo.addAttribute("carrito", carrito);
+        modelo.addAttribute("prodCars", getProductoCarritos());
+        modelo.addAttribute("pedido", pedidoRepository.findPedidoByUser(carrito.getUser().getId()));
+        return "detallePedido";
+    }
 
     
     

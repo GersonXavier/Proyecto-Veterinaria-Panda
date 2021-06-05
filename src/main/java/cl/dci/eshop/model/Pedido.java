@@ -23,7 +23,7 @@ public class Pedido {
    
      @Column
     private int user;
-    
+  
 
     
 public Pedido(int id, int user, String fecha) {
@@ -77,6 +77,10 @@ public void addPedido(User user) {
 	public void setUser(int user) {
 		this.user = user;
 	}
+
+
+
+
 	
 	
 	

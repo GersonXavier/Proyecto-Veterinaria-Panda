@@ -17,9 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -58,15 +60,20 @@ public class CarritoController {
     public String agregarPedido(@PathVariable int id){
         System.out.println(id);
         User user = userRepository.findById(id).orElse(null);
+      
        
         Pedido pedido = new Pedido();
+        
         pedido.addPedido(user);
 
-       
+      
         pedidoRepository.save(pedido);
         
         return "redirect:/pedido";
     }
+    
+    
+
 
     @PreAuthorize("hasAuthority('carrito:manage')")
     @PostMapping(path = "{id}")

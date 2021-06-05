@@ -13,7 +13,8 @@ import java.util.Optional;
 public interface ProductoCarritoRepository extends JpaRepository<ProductoCarrito, Integer> {
     //Optional<ProductoCarrito> findByProducto(Producto producto);
     //Optional<ProductoCarrito> findByCarrito(Carrito carrito);
-    List<ProductoCarrito> findByCarrito(Carrito carrito);
+  List<ProductoCarrito> findByCarrito(Carrito carrito);
     List<ProductoCarrito> findByProducto(Producto producto);
     List<ProductoCarrito> findByServicio(servicio servicio);
+    public ProductoCarrito findByCarritoId(Carrito carrito);
 }

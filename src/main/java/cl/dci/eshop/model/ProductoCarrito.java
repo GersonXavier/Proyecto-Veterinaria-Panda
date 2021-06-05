@@ -20,6 +20,8 @@ public class ProductoCarrito {
     @ManyToOne
     @JoinColumn(name = "servicio_id")
     private servicio servicio;
+    
+    
 
     public ProductoCarrito() {
     }
