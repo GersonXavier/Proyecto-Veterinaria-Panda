@@ -20,8 +20,10 @@ public class ProductoCarrito {
     @ManyToOne
     @JoinColumn(name = "servicio_id")
     private servicio servicio;
-    
-    
+    @Column
+    private int cant;
+    @Column 
+    private int subtotal;
 
     public ProductoCarrito() {
     }
@@ -30,6 +32,11 @@ public class ProductoCarrito {
         this.producto = producto;
         this.carrito = carrito;
         this.servicio = servicio;
+    }
+    
+    public void cantTotal(int canti,int pre) {
+    	cant = canti;
+    	subtotal= pre * cant;
     }
 
 
@@ -73,6 +80,24 @@ public class ProductoCarrito {
 	public void setServicio(servicio servicio) {
 		this.servicio = servicio;
 	}
+
+	public int getCant() {
+		return cant;
+	}
+
+	public void setCant(int cant) {
+		this.cant = cant;
+	}
+
+	public int getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(int subtotal) {
+		this.subtotal = subtotal;
+	}
+	
+	
     
     
 }

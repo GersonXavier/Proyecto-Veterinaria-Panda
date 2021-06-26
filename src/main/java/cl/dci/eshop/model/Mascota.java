@@ -4,6 +4,8 @@ package cl.dci.eshop.model;
 
 import javax.persistence.*;
 
+import cl.dci.eshop.auth.User;
+
 
 @Entity
 @Table(name = "mascota")
@@ -16,8 +18,10 @@ public class Mascota {
 	private String nombre;
 	@Column
 	private String tipo;
-	@Column
-	private int Dueño;
+	
+	@ManyToOne
+	@JoinColumn
+	private User user;
 	@Column
 	private int edad;
 	@Column
@@ -69,14 +73,17 @@ public class Mascota {
 
 
 
-	public int getDueño() {
-		return Dueño;
+
+
+
+	public User getUser() {
+		return user;
 	}
 
 
 
-	public void setDueño(int dueño) {
-		Dueño = dueño;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 

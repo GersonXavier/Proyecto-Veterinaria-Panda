@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+.header {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+}
+</style>
+
+<body>
+<nav th:replace="fragments :: navigation-shop"></nav>
+
+
+<div class="container">
+
+<h3 class="text-center mt-4">NUEVA CONSULTA</h3>
+   <div class="" id="modalMedicamento" data-backdrop="static" 
+							data-keyboard="false" tabindex="-1" 
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered modal-login modal-lg" >					
+							<div class="modal-content">
+								<div class="modal-header bg-blue-darker">
+									<h4 class="modal-title text-white">CONSULTA</h4>
+								</div>
+								<div class="modal-body">
+									<form method="POST" id="idRegistra" th:action="@{/api/producto/crearCon}">	
+										<input type="hidden" id="idCodigo" name="codigo" value="0" >
+										<div class="container">
+											<div class="row">
+												   <div class="form-group has-feedback col-md-6">	
+														<label for="exampleInputEmail1"><b>Mascota</b></label><br>
+												        <i class="fas fa-prescription-bottle-alt form-control-feedback2"></i>
+													    <select class="form-control" name="mascota" id="idmarca">
+													      <option value="0">[Seleccione su mascota]</option>
+													      <option th:each="bean:${mascotas}"
+													      			th:value="${bean.id}"
+													      			th:utext="${bean.nombre}"
+													      			/>
+													    </select>
+												   <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span><i class="fa fa-keyboard"></i> INCIDENTE</span>
+                                </div>
+                            </div>
+                            <textarea rows="8" cols="40" placeholder="ingrese una descripcion" name="descripcion" id="descripcionhtml" minlength=10></textarea>
+                            
+                        </div>
+											
+											    												
+											 
+											</div>
+										</div>								
+										<div class="col-md-12 text-center mt-4"> 										
+											<button type="submit" id="Guardar" class="btn btn-primary"><i class="fas fa-save"></i> Registrar</button>
+											<button type="button" id="btn-cerrar" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-undo-alt"></i> Cancelar</button>
+										</div> 																								
+									</form>
+								</div>
+							</div>
+						</div>
+		</div>
+</div>
+
+<script>
+  window.watsonAssistantChatOptions = {
+      integrationID: "97d439bf-adf9-4abc-8931-d00361ec7be5", // The ID of this integration.
+      region: "us-south", // The region your integration is hosted in.
+      serviceInstanceID: "a6ecbc3c-3d8f-4500-9822-bc271b50da86", // The ID of your service instance.
+      onLoad: function(instance) { instance.render(); }
+    };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+    document.head.appendChild(t);
+  });
+</script>
+
+</body>
+</html>

@@ -16,16 +16,18 @@
                         <table class="table table-dark table-hover">
                             <thead>
                             <tr>
+                            <th>ID</th>
                                 <th>NOMBRE</th>
                                 <th>TIPO</th>
                                 <th>EDAD</th>
                                 <th>PESO</th>
-                                <th>OPCIONES</th>
+                              
 
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="mascotax: ${mascotas}">
+                            <td th:text="${mascotax.id}">JOHN</td>
                                 <td th:text="${mascotax.nombre}">JOHN</td>
                                 <td th:text="${mascotax.tipo}">DOE</td>
                                 <td th:text="${mascotax.edad}">DOE</td>

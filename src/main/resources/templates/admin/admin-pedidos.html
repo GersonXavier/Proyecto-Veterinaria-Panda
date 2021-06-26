@@ -140,7 +140,7 @@ body {
         <div id="home" class="container tab-pane active"><br>
             <div class="row">
                 <div class="col-2"></div>
-                <div class="col-8 shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="col-8 shadow-lg p-3 mb-8 bg-white rounded">
                     <div class="container">
                         <h2>Lista de Pedidos</h2>
                         <table class="table table-dark table-hover">
@@ -149,6 +149,7 @@ body {
                                 <th>ID</th>
                                 <th>Fecha</th>
                                 <th>Usuario</th>
+                                 <th>Estado</th>
                                 <th>Tracking</th>
                              
                                 
@@ -158,14 +159,18 @@ body {
                             <tr th:each="pedidos: ${pedido}">
                                 <td th:text="${pedidos.id}">John</td>
                                 <td th:text="${pedidos.fecha}">Doe</td>
-                                <td th:text="${pedidos.user}">Doe</td>
+                                <td th:text="${pedidos.user.username}">Doe</td>
+                                <td id="estado2" th:value="${pedidos.estado}" th:text="${pedidos.estado}">Doe</td>
+                                
                                 
                                
                                 <td>
                                 
                                 
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-								data-target="#idcontenedor">Ver estado</button>
+								data-target="#idcontenedor" id="model" >Ver estado</button>
+								<a th:href="@{/detallePed/{id}(id=${pedidos.carrito.id})}" class="btn btn-danger" >Detalle</a>
+								
                          <!--  
                                     <form action="#" th:action="@{/api/producto/delete/{id}(id=${producto.id})}"
                                           method="post"
@@ -179,6 +184,13 @@ body {
                                         </button>
                                     </form>
                                     -->
+                                </td>
+                                <td>
+                              <form action="#"
+										th:action="@{/api/carrito/confirma/{id}(id=${pedidos.id})}"
+										method="post">
+										<button type="submit" class="btn btn-danger" id="confirmar">Confirmar</button>
+										</form>
                                 </td>
                             </tr>
                             </tbody>
@@ -282,6 +294,7 @@ body {
 
 <script>
 $(document).ready(function () {
+	
 const uno = document.getElementById("uno");
 const dos = document.getElementById("dos");
 const tres = document.getElementById("tres");
@@ -337,6 +350,11 @@ cuatro.addEventListener('click', function(){
 });
 
 
+
+
 </script>
+
+
+
 
 </html>

@@ -2,12 +2,16 @@ package cl.dci.eshop.controller;
 
 import cl.dci.eshop.auth.User;
 import cl.dci.eshop.model.Carrito;
+import cl.dci.eshop.model.Consultas;
+import cl.dci.eshop.model.Historial;
 import cl.dci.eshop.model.Mascota;
 import cl.dci.eshop.model.Pedido;
 import cl.dci.eshop.model.Producto;
 import cl.dci.eshop.model.ProductoCarrito;
 import cl.dci.eshop.model.servicio;
 import cl.dci.eshop.repository.CarritoRepository;
+import cl.dci.eshop.repository.ConsultaRepository;
+import cl.dci.eshop.repository.HistorialRepository;
 import cl.dci.eshop.repository.MascotaRepository;
 import cl.dci.eshop.repository.PedidoRepository;
 import cl.dci.eshop.repository.ProductoCarritoRepository;
@@ -26,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Controller
@@ -46,6 +51,10 @@ public class TemplateController {
     private MascotaRepository mascotaRepository;
     @Autowired 
     private PedidoRepository pedidoRepository;
+    @Autowired
+    private ConsultaRepository consultasRepository;
+    @Autowired
+    private HistorialRepository HistorialRepository;
 
 
     @GetMapping()
@@ -129,24 +138,26 @@ public class TemplateController {
 
         modelo.addAttribute("carrito", carrito);
         modelo.addAttribute("prodCars", getProductoCarritos());
-        modelo.addAttribute("pedido", pedidoRepository.findPedidoByUser(carrito.getUser().getId()));
+        modelo.addAttribute("pedido", pedidoRepository.findPedidoByUser(carrito.getUser()));
         return "pedido";
     }
     
     @PreAuthorize("hasAuthority('carrito:manage')")
-    @GetMapping("detallePed")
-    public String getPedidoDetalle(Model modelo) {
+    @GetMapping("detallePed/{id}")
+    public String getPedidoDetalle(Model modelo, @PathVariable("id") int idcar) {
         basicSetup(modelo, "Carrito");
 
         Carrito carrito = getCurrentUser().getCarrito();
-        
+       Carrito listaCar = carritoRepository.findById(idcar).orElse(null);
         
 
         modelo.addAttribute("carrito", carrito);
         modelo.addAttribute("prodCars", getProductoCarritos());
-        modelo.addAttribute("pedido", pedidoRepository.findPedidoByUser(carrito.getUser().getId()));
+        modelo.addAttribute("pedido", productoCarritoRepository.findByCarrito(listaCar));
         return "detallePedido";
     }
+    
+   
 
     
     
@@ -170,7 +181,7 @@ public class TemplateController {
     @GetMapping("admin/mascotaLis")
     public String getMascotasLista(Model modelo) {
        
-        List<Mascota> mascota = mascotaRepository.findAll();
+        List<Mascota> mascota = mascotaRepository.findMascotaByUser(getCurrentUser());
         modelo.addAttribute("mascotas", mascota);
 
         
@@ -185,6 +196,14 @@ public class TemplateController {
         modelo.addAttribute("usuario", new User());
         return "registro";
     }
+    
+    @GetMapping("historial")
+    public String gethistorial(Model modelo) {
+        
+        modelo.addAttribute("historias", HistorialRepository.findAll());
+        return "admin/historial";
+    }
+
 
     @PreAuthorize("hasAuthority('perfil:manage')")
     @GetMapping("perfil")
@@ -250,6 +269,31 @@ public class TemplateController {
         
     }
     
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @GetMapping("admin/consultas")
+    public String getAdminConsultas(Model modelo) {
+        basicSetup(modelo, "administrar servicios");
+        List<Consultas> consulta = consultasRepository.findAll() ;
+        modelo.addAttribute("consultas",consulta);
+
+       
+        return "admin/admin-consultas";
+        
+    }
+    
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @GetMapping("detalleCon/{id}")
+    public String getDetalleCon(Model modelo, @PathVariable("id") int id) {
+        basicSetup(modelo, "administrar servicios");
+        Consultas consulta = consultasRepository.findById(id).orElse(null);
+       
+        modelo.addAttribute("consulta",consulta);
+
+       
+        return "admin/detalle-consulta";
+        
+    }
+    
     
     @GetMapping("admin/mascotas")
     public String getMascotas(Model modelo) {
@@ -261,6 +305,19 @@ public class TemplateController {
         return "mascotas";
         
     }
+    
+    
+    @GetMapping("consultaMas")
+    public String cansultar(Model modelo) {
+        basicSetup(modelo, "administrar mascotas");
+       List<Mascota> mascota = mascotaRepository.findMascotaByUser(getCurrentUser());
+       
+       modelo.addAttribute("mascotas",mascota);
+        modelo.addAttribute("consulta", new Consultas());
+        return "consulta";
+        
+    }
+    
     
    
 

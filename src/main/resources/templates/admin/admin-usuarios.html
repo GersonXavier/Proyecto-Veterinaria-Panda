@@ -34,7 +34,7 @@
                                 <th>ROL</th>
                                 <th>CORREO</th>
                                 <th>DNI</th>
-                                <th>DIRECCION</th>
+                                
                                 <th>TELEFONO</th>
                                 
                                 <th>OPCIONES</th>
@@ -47,7 +47,7 @@
                                 <td th:text="${usuario.role}"></td>
                                  <td th:text="${usuario.correo}"></td>
                                   <td th:text="${usuario.dni}"></td>
-                                   <td th:text="${usuario.direccion}"></td>
+                                   
                                    <td th:text="${usuario.telefono}"></td>
 
                                 <td>
@@ -88,7 +88,7 @@
                                     <span><i class="fa fa-keyboard"></i></span>
                                 </div>
                             </div>
-                            <input type="text" placeholder="Nombre de usuario" th:field="*{username}" minlength="5" id="nombre" required minlength=5>
+                            <input type="text" placeholder="Nombre de usuario" th:field="*{username}"  id="nombre" required minlength=5>
                         </div>
                         <hr>
                         
@@ -108,7 +108,7 @@
                                     <span><i class="fa fa-keyboard"></i></span>
                                 </div>
                             </div>
-                            <input type="text" placeholder="ingrese su dni" th:field="*{dni}" minlength="5" id="dni" minlength=9>
+                            <input type="text" placeholder="ingrese su dni" th:field="*{dni}"  id="dni" minlength=9>
                         </div>
                         <hr>
                         
@@ -118,7 +118,7 @@
                                     <span><i class="fa fa-keyboard"></i></span>
                                 </div>
                             </div>
-                            <input type="text" placeholder="Ingrese su direccion" th:field="*{direccion}" minlength="5" id="direccion" minlength=5>
+                            <input type="text" placeholder="Ingrese su direccion" th:field="*{direccion}" id="direccion" minlength=5>
                         </div>
                         <hr>
                         
@@ -128,7 +128,7 @@
                                     <span><i class="fa fa-keyboard"></i></span>
                                 </div>
                             </div>
-                            <input type="text" placeholder="Ingrese su nro de telefono" th:field="*{telefono}" minlength="5" id="telefono" minlength=5>
+                            <input type="text" placeholder="Ingrese su nro de telefono" th:field="*{telefono}"  id="telefono" minlength=5>
                         </div>
                         <hr>
                         <div class="col">

@@ -175,7 +175,9 @@ body {
                             <tr th:each="pedidos: ${pedido}">
                                 <td th:text="${pedidos.id}">John</td>
                                 <td th:text="${pedidos.fecha}">Doe</td>
-                                <td th:text="${pedidos.user}">Doe</td>
+                                <td th:text="${pedidos.user.id}">Doe</td>
+                                 <td th:text="${pedidos.estado}">Doe</td>
+                                
                                 
                                
                                 <td>
@@ -187,7 +189,7 @@ body {
                                     <form action="#" th:action="@{/api/producto/delete/{id}(id=${producto.id})}"
                                           method="post"
                                           onsubmit="return confirm('¿Estás seguro que quieres borrar este producto? No hay vuelta atrás');">
-                                      -->  <a th:href="@{detallePed}">
+                                      -->  <a th:href="@{/detallePed/{id}(id=${pedidos.carrito.id})}">
                                             <button type="button" class="btn btn-warning">
                                                 DETALLE
                                             </button>

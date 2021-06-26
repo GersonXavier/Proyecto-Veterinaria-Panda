@@ -1,51 +1,52 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
 <body>
-<!-- Navigation -->
+
 <nav th:replace="fragments :: navigation-shop"></nav>
+<nav th:replace="fragments :: navigation-admin"></nav>
 
 
-<div class="container">
-  
-    <br>
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#home">Detalle</a>
-        </li>
-  
-    </ul>
 
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div id="home" class="container tab-pane active"><br>
+<div class="tab-content">
+        <div id="home" class=""><br>
             <div class="row">
                 <div class="col-2"></div>
-                <div class="col-8 shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="col-8 shadow-lg p-3 mb-8 bg-white rounded">
                     <div class="container">
-                        <h2>Lista de Productos</h2>
+                        <h2>Lista de Pedidos</h2>
                         <table class="table table-dark table-hover">
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>NOMBRE</th>
-                                <th>PRECIO</th>
-                         
-                                <th>OPCIONES</th>
+                                <th>Usuario</th>
+                                <th>Mascota</th>
+                                <th>Fecha</th>
+                                
+                             
+                                
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="deta: ${pedido}">
-                                <td th:text="${deta.producto.id}">John</td>
-                                <td th:text="${deta.producto.nombre}">Doe</td>
-                                <td th:text="${deta.producto.precio}">Doe</td>
+                            <tr th:each="consulta: ${consultas}">
+                            <td th:text="${consulta.id}">John</td>
+                                <td th:text="${consulta.user.id}">John</td>
+                                <td th:text="${consulta.mascota.nombre}">Doe</td>
+                                <td th:text="${consulta.fecha}">Doe</td>
+                               
                                 
                                 
-                              
-
+                               
                                 <td>
-               <!--  
+                                
+                                
+                                
+								<a th:href="@{/detalleCon/{id}(id=${consulta.id})}" class="btn btn-danger" >Detalle</a>
+								
+                         <!--  
                                     <form action="#" th:action="@{/api/producto/delete/{id}(id=${producto.id})}"
                                           method="post"
                                           onsubmit="return confirm('¿Estás seguro que quieres borrar este producto? No hay vuelta atrás');">
@@ -57,20 +58,26 @@
                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash-alt"></i>
                                         </button>
                                     </form>
-                                    -->
-                                    
+                                   
                                 </td>
+                                <td>
+                              <form action="#"
+										th:action="@{/api/carrito/confirma/{id}(id=${pedidos.id})}"
+										method="post">
+										<button type="submit" class="btn btn-danger" id="confirmar">Confirmar</button>
+										</form>
+                                </td> -->
                             </tr>
                             </tbody>
                         </table>
-                         <h3>TOTAL A PAGAR: <span th:text="'$'+${carrito.precioTotal}"></span></h3>
                     </div>
-                    
-                   
                 </div>
                 <div class="col-2"></div>
             </div>
         </div>
+  
+
+    </div>
 
 </body>
 </html>

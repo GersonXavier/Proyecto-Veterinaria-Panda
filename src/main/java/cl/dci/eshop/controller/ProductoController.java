@@ -2,11 +2,13 @@ package cl.dci.eshop.controller;
 
 import cl.dci.eshop.auth.User;
 import cl.dci.eshop.model.Carrito;
+import cl.dci.eshop.model.Consultas;
 import cl.dci.eshop.model.Mascota;
 import cl.dci.eshop.model.Producto;
 import cl.dci.eshop.model.ProductoCarrito;
 import cl.dci.eshop.model.servicio;
 import cl.dci.eshop.repository.CarritoRepository;
+import cl.dci.eshop.repository.ConsultaRepository;
 import cl.dci.eshop.repository.MascotaRepository;
 import cl.dci.eshop.repository.ProductoCarritoRepository;
 import cl.dci.eshop.repository.ProductoRepository;
@@ -29,6 +31,8 @@ import java.nio.Buffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -45,6 +49,8 @@ public class ProductoController {
     private ServicioRepository serviciojpaRepository;
     @Autowired
     private MascotaRepository mascotajpaRepository;
+    @Autowired
+    private ConsultaRepository consultajpaRepository;
 
 
 
@@ -140,6 +146,7 @@ public class ProductoController {
 				Files.write(rutaCompleta, BytesImg);
 				
 				mascota.setFoto1(masco.getOriginalFilename());
+				mascota.setUser(getCurrentUser());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -151,7 +158,36 @@ public class ProductoController {
         return "redirect:/admin/mascotas";
     }
 
+    
+   
+    @PostMapping("/crearCon")
+    public String crearConsulta(@RequestParam("mascota") int idmas, @RequestParam("descripcion") String des){
+    	Consultas con = new Consultas();
+    	Mascota mas = mascotajpaRepository.findById(idmas).orElse(null);
+    	 Date actual = new Date();
+ 		SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
+ 		formatoFecha.format(actual);
+    	con.setDescripcion(des);
+    	con.setMascota(mas);
+    	con.setFecha(formatoFecha.format(actual));
+    	con.setUser(getCurrentUser());
+    	
+    	
 
+        consultajpaRepository.save(con);
+        return "redirect:/consultaMas";
+    }
+    
+
+    private User getCurrentUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = null;
+
+        if (principal instanceof User) {
+            user = ((User) principal);
+        }
+        return user;
+    }
 
 
     @PreAuthorize("hasAuthority('producto:delete')")

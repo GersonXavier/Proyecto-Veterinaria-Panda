@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+   <div id="home" class=""><br>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8 shadow-lg p-3 mb-5 bg-white rounded">
+                    <div class="container">
+                        <h2>Lista de Productos</h2>
+                        <table class="table table-dark table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>MASCORA</th>
+                                <th>DESCRIPCION</th>
+                               
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="his: ${historias}">
+                                <td th:text="${his.id}">John</td>
+                                <td th:text="${his.mascota.nombre}">Doe</td>
+                                <td th:text="${his.descripcion}">Doe</td>
+                                
+                             
+                              
+
+                                <td>
+
+                                  
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+
+</body>
+</html>

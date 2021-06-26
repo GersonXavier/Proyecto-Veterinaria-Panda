@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
 <body>
 	<!-- Navigation -->
 	<nav th:replace="fragments :: navigation-shop"></nav>
@@ -42,7 +44,9 @@
 								<div class="col-xs-4">
 									<h4>
 										<input class="badge badge-secondary"
-											th:text="'$'+${prodCarrito.producto.precio}" id="precioso">
+											th:text="'$'+${prodCarrito.subtotal}" id="precioso">
+											<input type="hidden" id="idpro" th:value="${prodCarrito.producto.id}">
+											<input type="number" th:value="${prodCarrito.cant}" min="1" class="form-control" id="cant">
 									</h4>
 									<form action="#"
 										th:action="@{/api/carrito/{id}(id=${prodCarrito.id})}"
@@ -81,6 +85,11 @@
 						<div class="col-xs-3" th:if="${carrito.cantidadProductos} &gt; 0">
 							<button type="button" class="btn btn-primary" data-toggle="modal"
 								data-target="#idcontenedor">HACER PEDIDO</button>
+						</div>
+						<br>
+						<div class="col-xs-3" th:if="${carrito.cantidadProductos} &gt; 0">
+							<a th:href="@{/pedido}" class="btn btn-danger" 
+								>MIS PEDIDOS</a>
 						</div>
 					</div>
 				</div>
@@ -263,12 +272,20 @@
 
 $(document).ready(function(){
 
-	$('#cantidad').click(function(){
-		var cant = document.getElementById('cantidad');
-		var prec = document.getElementById('precioso');
-		var total = cant.value*precio.value;
-		prec.attr("value","gerson");
-	});
+	$("h4 #cant").click(function(){
+		
+		var idpro = $("#idpro").val();
+		var cant = $("#cant").val();
+		var url = "/api/carrito/cantidad";
+		$.ajax({
+			type:'POST',
+			url:url,
+			data:"idpro="+idpro+"&cant="+cant,
+			success: function(data,textStatus,jqXHR){
+				location.href="/carrito";
+			}
+		})
+	})
 })
 </script>
 

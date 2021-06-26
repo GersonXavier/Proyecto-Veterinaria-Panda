@@ -19,6 +19,7 @@ public class Carrito {
     private int cantidadProductos;
     @Column
     private int precioTotal;
+    
 
     /*@JoinTable(name = "producto_carrito",
             joinColumns = @JoinColumn(name = "carrito_id"),
@@ -63,6 +64,7 @@ public class Carrito {
         this.cantidadProductos++;
         //this.productos.add(producto);
     }
+   
 
     public void deleteProducto(Producto producto){
         this.precioTotal -= producto.getPrecio();
@@ -74,6 +76,11 @@ public class Carrito {
         this.cantidadProductos--;
     }
     
+    public void cantPrecio(Producto pro) {
+    	
+    	this.cantidadProductos ++;
+    	this.precioTotal += pro.getPrecio();
+    }
   
 /*
     public void vaciarCarrito(){
